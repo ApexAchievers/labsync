@@ -6,11 +6,11 @@ import SignUp from "./pages/SignUp";
 function App() {
   const [count, setCount] = useState(0);
 
-  const nogmaHEnterpriseRouter = createBrowserRouter([
+  const labSyncRouter = createBrowserRouter([
     { path: "/", element: <Home /> },
-    {path: '/login', element:<Login />},
-    {path: '/sign-up', element:<SignUp />},
-    {path: '/not-found', element:<NotFound />},
+    { path: "/login", element: <Login /> },
+    { path: "/sign-up", element: <SignUp /> },
+    { path: "/not-found", element: <NotFound /> },
   ]);
 
   return (
