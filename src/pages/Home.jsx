@@ -1,7 +1,9 @@
-import React from 'react';
 
-export default function HomePage() {
+
+export default function Home() {
   return (
+
+    <>
     <div className="font-sans text-gray-900">
       {/* Header */}
       <header className="bg-white shadow">
@@ -83,5 +85,7 @@ export default function HomePage() {
       </section>
 
     </div>
+    </>
+    
   );
 }
