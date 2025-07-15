@@ -13,7 +13,7 @@ export default function Navbar() {
           <span className="text-black text-xl font-semibold">LabSync</span>
         </div>
         
-        {/* Desktop Navigation Links and Login Button */}
+
         <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
           <a href="#" className="text-black hover:text-gray-600 transition-colors">
             Home
@@ -40,7 +40,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Navigation Menu */}
+
       {isMenuOpen && (
         <div className="md:hidden mt-4 pb-4 border-t border-gray-200">
           <div className="flex flex-col space-y-4 pt-4">
