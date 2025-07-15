@@ -1,192 +1,140 @@
 import React, { useState } from 'react';
-import { Eye, EyeOff } from 'lucide-react';
+import { FlaskConical } from 'lucide-react';
+import Google from "../assets/images/google icon removed.png";
 
-export default function SignUpPage() {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    confirmPassword: ''
-  });
-  
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [error, setError] = useState('');
+export default function SignUp() {
+    const [formData, setFormData] = useState({
+        fullName: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+        agreeTerms: false,
+    });
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-    if (name === 'password' || name === 'confirmPassword') {
-      setError('');
-    }
-  };
+    const handleChange = (e) => {
+        const { name, value, type, checked } = e.target;
+        setFormData({
+            ...formData,
+            [name]: type === 'checkbox' ? checked : value,
+        });
+    };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (formData.password !== formData.confirmPassword) {
-      setError('Passwords do not match.');
-      return;
-    }
-    setError('');
-    console.log('Form submitted:', formData);
-    // Add your signup logic here
-  };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (formData.password !== formData.confirmPassword) {
+            alert('Passwords do not match!');
+            return;
+        }
 
-  const handleSignIn = () => {
-    console.log('Navigate to sign in');
-    // Add navigation logic here
-  };
+        if (!formData.agreeTerms) {
+            alert('You must agree to the terms!');
+            return;
+        }
 
-  return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-6">
-        {/* Sign Up Form */}
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-          <div className="mb-6">
-            <div className="flex items-center mb-2">
-              <div className="w-6 h-6 bg-green-500 rounded mr-2"></div>
-              <h2 className="text-lg font-medium text-gray-900">Create New Account</h2>
+
+        console.log('Form submitted:', formData);
+    };
+
+    return (
+        <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+            <div className="w-full max-w-md bg-white p-6 rounded-lg shadow">
+                {/* Logo & Title */}
+                <div className="flex flex-col items-center mb-6">
+                    <div className="bg-green-500 w-10 h-10 flex items-center justify-center rounded-full mb-2">
+                        <span className="text-white text-xl font-bold"> <FlaskConical /> </span>
+                    </div>
+                    <h2 className="text-xl font-bold text-gray-900">Create Your LabSync Account</h2>
+                    <p className="text-sm text-gray-500 text-center">Join our platform to manage your lab operations</p>
+                </div>
+
+                {/* Form */}
+                <form onSubmit={handleSubmit} className="space-y-4">
+                    <div>
+                        <label htmlFor="fullName" className="text-sm text-gray-700 block mb-1">Full Name</label>
+                        <input
+                            id="fullName"
+                            name="fullName"
+                            type="text"
+                            value={formData.fullName}
+                            onChange={handleChange}
+                            placeholder="Enter your full name"
+                            className="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                            required
+                        />
+                    </div>
+
+                    <div>
+                        <label htmlFor="email" className="text-sm text-gray-700 block mb-1">Email Address</label>
+                        <input
+                            id="email"
+                            name="email"
+                            type="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            placeholder="Enter your email"
+                            className="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                            required
+                        />
+                    </div>
+
+                    <div>
+                        <label htmlFor="password" className="text-sm text-gray-700 block mb-1">Password</label>
+                        <input
+                            id="password"
+                            name="password"
+                            type="password"
+                            value={formData.password}
+                            onChange={handleChange}
+                            placeholder="Create a password"
+                            className="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                            required
+                        />
+                    </div>
+
+                    <div>
+                        <label htmlFor="confirmPassword" className="text-sm text-gray-700 block mb-1">Confirm Password</label>
+                        <input
+                            id="confirmPassword"
+                            name="confirmPassword"
+                            type="password"
+                            value={formData.confirmPassword}
+                            onChange={handleChange}
+                            placeholder="Confirm your password"
+                            className="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                            required
+                        />
+                    </div>
+
+                    <div className="flex items-center text-sm">
+                        <input
+                            type="checkbox"
+                            name="agreeTerms"
+                            id="agreeTerms"
+                            checked={formData.agreeTerms}
+                            onChange={handleChange}
+                            className="mr-2"
+                            required
+                        />
+                        <label htmlFor="agreeTerms">
+                            I agree to the <span className="text-green-600">Terms of Service</span> and <span className="text-green-600">Privacy Policy</span>
+                        </label>
+                    </div>
+
+                    <button
+                        type="submit"
+                        className="w-full bg-green-500 hover:bg-green-600 text-white py-2 rounded text-sm font-medium transition">
+                        Sign Up
+                    </button>
+                    <p className="text-center text-sm text-gray-500">
+                        Already have an account? <span className="text-green-600 font-medium cursor-pointer">Log in</span>
+                    </p>
+                    <button type="button" className="w-full flex items-center justify-center gap-2 border border-gray-300 rounded-md py-2 text-sm font-medium text-white hover:bg-green-600 transition duration-150 bg-green-500 "
+                        onClick={() => console.log('Sign up with Google')}  >
+                        <img src={Google} alt="Google" className="w-5 h-5" />
+                        Sign up with Google
+                    </button>
+                </form>
             </div>
-            <p className="text-sm text-gray-500">Please fill in the form to continue</p>
-          </div>
-
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">
-                First Name
-              </label>
-              <input
-                id="firstName"
-                name="firstName"
-                type="text"
-                required
-                value={formData.firstName}
-                onChange={handleInputChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
-                placeholder="Enter your first name"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-1">
-                Last Name
-              </label>
-              <input
-                id="lastName"
-                name="lastName"
-                type="text"
-                required
-                value={formData.lastName}
-                onChange={handleInputChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
-                placeholder="Enter your last name"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                Email
-              </label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                value={formData.email}
-                onChange={handleInputChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
-                placeholder="Enter your email"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
-                Password
-              </label>
-              <div className="relative">
-                <input
-                  id="password"
-                  name="password"
-                  type={showPassword ? 'text' : 'password'}
-                  autoComplete="new-password"
-                  required
-                  value={formData.password}
-                  onChange={handleInputChange}
-                  className="w-full px-3 py-2 pr-10 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
-                  placeholder="Enter your password"
-                />
-                <button
-                  type="button"
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center"
-                  onClick={() => setShowPassword(!showPassword)}
-                >
-                  {showPassword ? (
-                    <EyeOff className="h-4 w-4 text-gray-400" />
-                  ) : (
-                    <Eye className="h-4 w-4 text-gray-400" />
-                  )}
-                </button>
-              </div>
-            </div>
-
-            <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-1">
-                Confirm Password
-              </label>
-              <div className="relative">
-                <input
-                  id="confirmPassword"
-                  name="confirmPassword"
-                  type={showConfirmPassword ? 'text' : 'password'}
-                  autoComplete="new-password"
-                  required
-                  value={formData.confirmPassword}
-                  onChange={handleInputChange}
-                  className="w-full px-3 py-2 pr-10 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
-                  placeholder="Confirm your password"
-                />
-                <button
-                  type="button"
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center"
-                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                >
-                  {showConfirmPassword ? (
-                    <EyeOff className="h-4 w-4 text-gray-400" />
-                  ) : (
-                    <Eye className="h-4 w-4 text-gray-400" />
-                  )}
-                </button>
-              </div>
-              {error && <p className="text-red-500 text-xs mt-1">{error}</p>}
-            </div>
-
-            <button
-              type="submit"
-              className="w-full bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-colors font-medium"
-            >
-              Create Account
-            </button>
-          </form>
         </div>
-
-        {/* Sign In Section */}
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-          <div className="text-center">
-            <p className="text-sm text-gray-600 mb-4">Already have an account?</p>
-            <button
-              onClick={handleSignIn}
-              className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors font-medium"
-            >
-              Log In
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+    );
 }
