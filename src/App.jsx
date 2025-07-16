@@ -6,6 +6,7 @@ import SignUp from "./pages/SignUp";
 import PatientDashboard from "./pages/PatientDashboard";
 import NotFound from "./pages/NotFound";
 import AppointmentPage from "./pages/AppointmentPage";
+import Contact from "./pages/Contact";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -17,6 +18,7 @@ function App() {
     { path: "patient-dashboard", element: <PatientDashboard /> },
     { path: "*", element: <NotFound /> },
     { path: "/appointment-page", element: <AppointmentPage /> },
+    { path: "/contact", element: <Contact /> },
   ]);
 
   return (
