@@ -3,9 +3,13 @@ import React, { useState } from "react";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import Profile from "./pages/Profile";
 import PatientDashboard from "./pages/PatientDashboard";
+import TechnicianDashboard from "./pages/TechnicianDashboard";
+import ManagerDashboard from "./pages/ManagerDashboard";
 import NotFound from "./pages/NotFound";
 import AppointmentPage from "./pages/AppointmentPage";
+import Contact from "./pages/Contact";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -14,9 +18,13 @@ function App() {
     { path: "/", element: <Home /> },
     { path: "/login", element: <Login /> },
     { path: "/sign-up", element: <SignUp /> },
+    { path: "/profile", element: <Profile /> },
     { path: "patient-dashboard", element: <PatientDashboard /> },
-    { path: "*", element: <NotFound /> },
+    { path: "technician-dashboard", element: <TechnicianDashboard /> },
+    { path: "manager-dashboard", element: <ManagerDashboard /> },
     { path: "/appointment-page", element: <AppointmentPage /> },
+    { path: "/contact", element: <Contact /> },
+    { path: "*", element: <NotFound /> },
   ]);
 
   return (
