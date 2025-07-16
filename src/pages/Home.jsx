@@ -95,24 +95,24 @@ export default function Home() {
                 Smart laboratory management system that reduces wait times, improves efficiency, and enhances patient experience through real-time queue management and appointment booking.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center justify-center lg:justify-start">
-             <Link to="/sign-up">
-                <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-sm sm:text-base transition duration-300 bg-[#C2A344] text-white hover:bg-gray-300 min-w-[160px] cursor-pointer">
-                  Get Started
-                </button>
-             </Link>
+                <Link to="/sign-up">
+                  <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-sm sm:text-base transition duration-300 bg-[#C2A344] text-white hover:bg-gray-300 min-w-[160px] cursor-pointer">
+                    Get Started
+                  </button>
+                </Link>
 
-             <Link>
-                <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-sm sm:text-base transition duration-300 bg-transparent text-white border-2 hover:bg-gray-300 min-w-[160px] cursor-pointer">
-                  Watch Demo
-                </button>
-             </Link>
+                <Link>
+                  <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-sm sm:text-base transition duration-300 bg-transparent text-white border-2 hover:bg-gray-300 min-w-[160px] cursor-pointer">
+                    Watch Demo
+                  </button>
+                </Link>
               </div>
             </div>
             <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
-              <img 
-                src="https://cdn.pixabay.com/photo/2017/10/05/21/45/laboratory-2821207_1280.jpg" 
-                alt="Lab visit" 
-                className="w-full max-w-[250px] sm:max-w-[300px] md:max-w-[400px] lg:max-w-[500px] h-auto rounded-lg shadow-lg" 
+              <img
+                src="https://cdn.pixabay.com/photo/2017/10/05/21/45/laboratory-2821207_1280.jpg"
+                alt="Lab visit"
+                className="w-full max-w-[250px] sm:max-w-[300px] md:max-w-[400px] lg:max-w-[500px] h-auto rounded-lg shadow-lg"
               />
             </div>
           </div>
@@ -230,24 +230,24 @@ export default function Home() {
             </button>
             <h3 className="text-lg sm:text-xl font-semibold mb-4 pr-8">Contact Us</h3>
             <div className="space-y-3 sm:space-y-4">
-              <input 
-                name="text" 
-                placeholder="Your Name" 
-                className="w-full p-2 sm:p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 text-sm sm:text-base" 
+              <input
+                name="text"
+                placeholder="Your Name"
+                className="w-full p-2 sm:p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 text-sm sm:text-base"
               />
-              <input 
-                name="email" 
+              <input
+                name="email"
                 type="email"
-                placeholder="Your Email" 
-                className="w-full p-2 sm:p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 text-sm sm:text-base" 
+                placeholder="Your Email"
+                className="w-full p-2 sm:p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 text-sm sm:text-base"
               />
-              <textarea 
-                rows="4" 
-                placeholder="Your Message" 
+              <textarea
+                rows="4"
+                placeholder="Your Message"
                 className="w-full p-2 sm:p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 text-sm sm:text-base resize-none"
               ></textarea>
-              <button 
-                type="button" 
+              <button
+                type="button"
                 className="w-full bg-[#059669] text-white py-2 sm:py-3 rounded-md hover:bg-green-700 transition text-sm sm:text-base font-medium"
               >
                 Send Message
