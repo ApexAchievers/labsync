@@ -95,12 +95,17 @@ export default function Home() {
                 Smart laboratory management system that reduces wait times, improves efficiency, and enhances patient experience through real-time queue management and appointment booking.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center justify-center lg:justify-start">
-                <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-sm sm:text-base transition duration-300 bg-[#C2A344] text-white hover:bg-gray-300 min-w-[160px]">
+             <Link to="/sign-up">
+                <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-sm sm:text-base transition duration-300 bg-[#C2A344] text-white hover:bg-gray-300 min-w-[160px] cursor-pointer">
                   Get Started
                 </button>
-                <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-sm sm:text-base transition duration-300 bg-transparent text-white border-2 hover:bg-gray-300 min-w-[160px]">
+             </Link>
+
+             <Link>
+                <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-sm sm:text-base transition duration-300 bg-transparent text-white border-2 hover:bg-gray-300 min-w-[160px] cursor-pointer">
                   Watch Demo
                 </button>
+             </Link>
               </div>
             </div>
             <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
@@ -183,12 +188,12 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
               <Link to="/sign-up">
-                <button data-aos="zoom-in" className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-sm sm:text-base transition duration-300 bg-[#C2A344] text-white hover:bg-gray-300 min-w-[160px]">
+                <button data-aos="zoom-in" className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-sm sm:text-base transition duration-300 bg-[#C2A344] text-white hover:bg-gray-300 min-w-[160px] cursor-pointer">
                   Create Account
                 </button>
               </Link>
               <Link to="/login">
-                <button data-aos="zoom-in" className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-sm sm:text-base transition duration-300 bg-transparent text-white border-2 hover:bg-gray-300 min-w-[160px]">
+                <button data-aos="zoom-in" className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-sm sm:text-base transition duration-300 bg-transparent text-white border-2 hover:bg-gray-300 min-w-[160px] cursor-pointer">
                   Log in
                 </button>
               </Link>
@@ -209,13 +214,13 @@ export default function Home() {
 
       <button
         onClick={() => setShowContact(true)}
-        className="fixed bottom-4 sm:bottom-6 left-4 sm:left-6 bg-[#4CAF50] hover:bg-[#047857] text-white px-3 sm:px-4 py-2 rounded-full shadow-md z-50 transition duration-300 text-xs sm:text-sm"
+        className="fixed bottom-4 sm:bottom-6 left-4 sm:left-6 bg-[#4CAF50] hover:bg-[#047857] text-white px-3 sm:px-4 py-2 rounded-full shadow-md z-50 transition duration-300 text-xs sm:text-sm cursor-pointer"
       >
         Contact Us
       </button>
 
       {showContact && (
-        <div className="fixed inset-0 backdrop-blur-xs bg-black bg-opacity-50 flex justify-center items-center z-50 px-4 sm:px-6">
+        <div className="fixed inset-0 backdrop-blur-xs bg-opacity-50 flex justify-center items-center z-50 px-4 sm:px-6">
           <div className="bg-white rounded-xl p-4 sm:p-6 shadow-lg relative w-full max-w-md animate-fade-in-up max-h-[90vh] overflow-y-auto">
             <button
               onClick={() => setShowContact(false)}
@@ -228,18 +233,18 @@ export default function Home() {
               <input 
                 name="text" 
                 placeholder="Your Name" 
-                className="w-full p-2 sm:p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 text-sm sm:text-base" 
+                className="w-full p-2 sm:p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 text-sm sm:text-base" 
               />
               <input 
                 name="email" 
                 type="email"
                 placeholder="Your Email" 
-                className="w-full p-2 sm:p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 text-sm sm:text-base" 
+                className="w-full p-2 sm:p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 text-sm sm:text-base" 
               />
               <textarea 
                 rows="4" 
                 placeholder="Your Message" 
-                className="w-full p-2 sm:p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 text-sm sm:text-base resize-none"
+                className="w-full p-2 sm:p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 text-sm sm:text-base resize-none"
               ></textarea>
               <button 
                 type="button" 
