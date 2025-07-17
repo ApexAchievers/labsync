@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { BarChart3, Users, Package, FlaskConical, TestTube, TestTube2, Settings, Edit3, UserCheck, Clock, AlertTriangle, TrendingUp, Percent, Calendar, LogOut, Clock4, ChartLine, ChartBar } from 'lucide-react';
+import { BarChart3, Users, Package, FlaskConical, TestTube, TestTube2, Settings, Edit3, UserCheck, Clock, AlertTriangle, TrendingUp, Percent, Calendar, LogOut, Clock4, ChartLine, ChartBar, SquarePen, Trash2, UserPlus } from 'lucide-react';
 import TrackingWidget from '../components/QueueTrackerWidget';
 
 export default function Dashboard() {
   const [activeMenu, setActiveMenu] = useState('dashboard');
 
-  const menuItems = [ 
+  const menuItems = [
     { id: 'dashboard', label: 'Dashboard', icon: ChartLine },
     { id: 'staff', label: 'Staff Management', icon: Users },
     { id: 'inventory', label: 'Inventory', icon: Package },
@@ -40,8 +40,8 @@ export default function Dashboard() {
                   key={item.id}
                   onClick={() => handleMenuClick(item.id)}
                   className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors duration-200 ${isActive
-                      ? 'text-white bg-[#3b82f6] shadow-sm'
-                      : 'text-gray-600 hover:bg-gray-100 hover:text-gray-800'
+                    ? 'text-white bg-[#3b82f6] shadow-sm'
+                    : 'text-gray-600 hover:bg-gray-100 hover:text-gray-800'
                     }`}
                 >
                   <Icon className="w-5 h-5" />
@@ -136,9 +136,9 @@ export default function Dashboard() {
                     <p className="text-gray-500">Staff workload chart would be displayed here</p>
                   </div>
                 </div>
-              <div>
-                <TrackingWidget />
-              </div>
+                <div>
+                  <TrackingWidget />
+                </div>
                 {/* Inventory Status */}
                 <div className="bg-white p-6 rounded-lg shadow-sm">
                   <div className="flex items-center justify-between mb-4">
@@ -236,10 +236,177 @@ export default function Dashboard() {
 
           {/* Staff Management */}
           {activeMenu === 'staff' && (
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h3 className="text-lg font-semibold text-gray-800 mb-4">Staff Management</h3>
-              <p className="text-gray-600">Staff management content would be displayed here. This could include staff schedules, assignments, performance metrics, and team management tools.</p>
-            </div>
+            <>
+              {/* Staff Management  content*/}
+              {activeMenu === 'staff' && (
+                <div className="bg-white p-6 rounded-lg shadow-sm">
+                  <div className="space-y-6">
+
+                    {/* Create User Section */}
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                      <h4 className="text-md font-semibold text-gray-700 mb-4">Create New User</h4>
+                      <div className="flex space-x-4">
+                        <input
+                          name="text"
+                          placeholder="Full Name"
+                          className="w-1/4 px-1 mb-6 border rounded-sm"
+                        />
+                        <input
+                          name="email"
+                          placeholder="Email"
+                          className="w-1/4 px-1 mb-6 border rounded-sm"
+                        />
+                        <input
+                          type="Password"
+                          placeholder="create password"
+                          className="w-1/4 px-1 mb-6 border rounded-sm"
+                        />
+                        <select className="w-1/4 px-1 mb-6 border rounded-sm">
+                          <option value="staff">Technician/Staff</option>
+                          <option value="admin">User</option>
+                        </select>
+                        <button className="bg-blue-500 flex text-white cursor-pointer hover:bg-blue-600 w-[100px] px-0.5 mb-6 border rounded-sm">
+                          Add User <span className=''><UserPlus className='w-3 h-7 justify-center'/></span>
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* List of Users Section */}
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                      <h4 className="text-md font-semibold text-gray-700 mb-2">Users</h4>
+                      <table className="w-full text-left">
+                        <thead>
+                          <tr className="bg-gray-200">
+                            <th className="p-2">Name</th>
+                            <th className="p-2">Email</th>
+                            <th className="p-2">Role</th>
+                            <th className="p-2">Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr className="border-b">
+                            <td className="p-2">Dr. Sarah Johnson</td>
+                            <td className="p-2">sarah.johnson@example.com</td>
+                            <td className="p-2">Admin</td>
+                            <td className="p-2 mt-1 flex">
+                             <SquarePen className="w-4 h-4 mr-4 text-green-300" />
+                              <Trash2 className='w-4 h-4 mr-4 text-red-500' />
+                            </td>
+                          </tr>
+                          <tr className="border-b">
+                            <td className="p-2">John Doe</td>
+                            <td className="p-2">john.doe@example.com</td>
+                            <td className="p-2">Staff</td>
+                            <td className="p-2 mt-1 flex">
+                             <SquarePen className="w-4 h-4 mr-4 text-green-300" />
+                              <Trash2 className="w-4 h-4 mr-4 text-red-500" />
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    {/* Assign Task Section */}
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                      <h4 className="text-md font-semibold text-gray-700 mb-2">Assign Task</h4>
+                      <div className="flex space-x-4">
+                        <select className="w-1/3 px-1 mb-6 border rounded-sm">
+                          <option className='text-gray-400' disabled value="">Select Technician</option>
+                          <option value="sarah.johnson">Dr. Sarah Johnson</option>
+                          <option value="john.doe">John Doe</option>
+                        </select>
+                        <input
+                          type="text"
+                          placeholder="Task Description"
+                          className="w-1/3 px-1 mb-6 border rounded-sm"
+                        />
+                        <input
+                          type="date"
+                          className="w-1/3 px-1 mb-6 border rounded-sm"
+                        />
+                        <button className="bg-green-500 text-white hover:bg-green-600  w-[150px] px-0.5 mb-6 border rounded-sm">
+                          Assign Task
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Staff Schedules Section */}
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                      <h4 className="text-md font-semibold text-gray-700 mb-2">Staff Schedules</h4>
+                      <table className="w-full text-left">
+                        <thead>
+                          <tr className="bg-gray-200">
+                            <th className="p-2">Name</th>
+                            <th className="p-2">Date</th>
+                            <th className="p-2">Shift</th>
+                            <th className="p-2">Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr className="border-b">
+                            <td className="p-2">Dr. Sarah Johnson</td>
+                            <td className="p-2">2025-07-17</td>
+                            <td className="p-2">9:00 AM - 5:00 PM</td>
+                            <td className="p-2 mt-1 flex">
+                              <SquarePen className="w-4 h-4 mr-4 text-green-300" />
+                              <Trash2 className='w-4 h-4 mr-4 text-red-500' />
+                            </td>
+                          </tr>
+                          <tr className="border-b">
+                            <td className="p-2">John Doe</td>
+                            <td className="p-2">2025-07-17</td>
+                            <td className="p-2">1:00 PM - 9:00 PM</td>
+                            <td className="p-2 mt-1 flex">
+                              <SquarePen className="w-4 h-4 mr-4 text-green-300" />
+                              <Trash2 className='w-4 h-4 mr-4 text-red-500' />
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    {/* Assignments Section */}
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                      <h4 className="text-md font-semibold text-gray-700 mb-2">Assignments</h4>
+                      <table className="w-full text-left">
+                        <thead>
+                          <tr className="bg-gray-200">
+                            <th className="p-2">User</th>
+                            <th className="p-2">Task</th>
+                            <th className="p-2">Due Date</th>
+                            <th className="p-2">Status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr className="border-b">
+                            <td className="p-2">Dr. Sarah Johnson</td>
+                            <td className="p-2">Review Test Results</td>
+                            <td className="p-2">2025-07-18</td>
+                            <td className="p-2 text-yellow-500">In Progress</td>
+                          </tr>
+                          <tr className="border-b">
+                            <td className="p-2">John Doe</td>
+                            <td className="p-2">Inventory Check</td>
+                            <td className="p-2">2025-07-19</td>
+                            <td className="p-2 text-green-500">Completed</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    {/* Team Management Tools Section */}
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                      <h4 className="text-md font-semibold text-gray-700 mb-2">Team Management Tools</h4>
+                      <div className="space-y-2">
+                        <button className="bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600 w-full">Generate Team Report</button>
+                        <button className="bg-green-500 text-white p-2 rounded-lg hover:bg-green-600 w-full">Schedule Team Meeting</button>
+                        <button className="bg-yellow-500 text-white p-2 rounded-lg hover:bg-yellow-600 w-full">Assign Team Project</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </>
           )}
 
           {/* Inventory */}
