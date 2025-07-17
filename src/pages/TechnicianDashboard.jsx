@@ -6,7 +6,7 @@ import { Clock, Loader, CheckCircle, CircleHelp, ListTodo, Pencil, } from "lucid
 
 
 
-export default function DashboardContent() {
+export default function TechnicianDashboard() {
   return (
     <>
     <div className="flex min-h-screen bg-gray-100">
@@ -130,14 +130,6 @@ export default function DashboardContent() {
   );
 }
 
-import React from 'react'
 
-export default function TechnicianDashboard(){
-  return (
-    <div>
-      <h1>hesi</h1>
-    </div>
-  );
-}
 
 
