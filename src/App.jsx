@@ -6,6 +6,7 @@ import SignUp from "./pages/SignUp";
 import Profile from "./pages/Profile";
 import PatientDashboard from "./pages/PatientDashboard";
 import TechnicianDashboard from "./pages/TechnicianDashboard";
+import TaskDetail from './pages/TaskDetail';
 import ManagerDashboard from "./pages/ManagerDashboard";
 import NotFound from "./pages/NotFound";
 import AppointmentPage from "./pages/AppointmentPage";
@@ -21,6 +22,7 @@ function App() {
     { path: "/profile", element: <Profile /> },
     { path: "patient-dashboard", element: <PatientDashboard /> },
     { path: "technician-dashboard", element: <TechnicianDashboard /> },
+    { path: "/tasks/:id", element: <TaskDetail /> },
     { path: "manager-dashboard", element: <ManagerDashboard /> },
     { path: "/appointment-page", element: <AppointmentPage /> },
     { path: "/contact", element: <Contact /> },
