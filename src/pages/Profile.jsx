@@ -64,7 +64,7 @@ export default function Profile() {
           </div>
 
           {/* Button */}
-          <Link to={'/'} className="pt-4 text-center">
+          <Link to={'/edit-profile'} className="pt-4 text-center">
             <button
               type="button"
               className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition duration-300"

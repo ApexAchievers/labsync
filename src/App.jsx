@@ -21,7 +21,7 @@ function App() {
     { path: "/login", element: <Login /> },
     { path: "/sign-up", element: <SignUp /> },
     { path: "/profile", element: <Profile /> },
-    { path: "/edit-profile", element: <Profile /> },
+    { path: "/edit-profile", element: <EditProfile /> },
     { path: "patient-dashboard", element: <PatientDashboard /> },
     { path: "technician-dashboard", element: <TechnicianDashboard /> },
     { path: "/tasks/:id", element: <TaskDetail /> },
