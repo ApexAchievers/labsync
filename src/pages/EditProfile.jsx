@@ -1,15 +1,13 @@
-import React from "react";
-import { Pencil } from "lucide-react";
-import { Link } from "react-router";
+import { Pencil, Trash } from "lucide-react";
+import { Link } from "lucide-react";
 
-export default function Profile() {
+export default function EditProfile() {
   return (
     <div className="min-h-screen bg-gray-100 py-10 px-4">
       <div className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-md">
         <h1 className="text-2xl font-bold mb-6 text-center text-gray-800">
-          Your Profile
+          Edit Your Profile
         </h1>
-
         <form className="space-y-6 max-w-md mx-auto">
           {/* Full Name */}
           <div>
@@ -19,7 +17,6 @@ export default function Profile() {
             <input
               type="text"
               name="name"
-              placeholder="Full name"
               className="w-full border border-gray-300 rounded-md px-4 py-2 text-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-400"
             />
           </div>
@@ -30,9 +27,8 @@ export default function Profile() {
               Password
             </label>
             <input
-              type="password"
+              type="text"
               name="password"
-              placeholder="••••••••"
               className="w-full border border-gray-300 rounded-md px-4 py-2 text-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-400"
             />
           </div>
@@ -40,39 +36,45 @@ export default function Profile() {
           {/* Email */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              Email Address
+              Email
             </label>
             <input
-              type="email"
+              type="text"
               name="email"
-              placeholder="example@mail.com"
               className="w-full border border-gray-300 rounded-md px-4 py-2 text-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-400"
             />
           </div>
 
-          {/* Phone */}
+          {/* Phone Number */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Phone Number
             </label>
             <input
-              type="tel"
-              name="phone"
-              placeholder="+234 801 234 5678"
+              type="text"
+              name="number"
               className="w-full border border-gray-300 rounded-md px-4 py-2 text-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-400"
             />
           </div>
 
-          {/* Button */}
-          <Link to={'/edit-profile'} className="pt-4 text-center">
-            <button
-              type="button"
-              className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition duration-300"
-            >
-              <Pencil className="w-4 h-4" />
-              Edit Profile
-            </button>
-          </Link>
+          {/* Action Buttons */}
+          <div className="pt-6 flex items-center justify-center gap-4">
+            {/* Save Changes Button */}
+            <div>
+              <button className="inline-flex items-center gap-2 bg-blue-600 text-white px-5 py-2.5 rounded-md hover:bg-blue-700 transition duration-300">
+                <Pencil className="w-4 h-4" />
+                Save Changes
+              </button>
+            </div>
+
+            {/* Delete Profile Button */}
+            <div>
+              <button className="inline-flex items-center gap-2 bg-red-600 text-white px-5 py-2.5 rounded-md hover:bg-red-700 transition duration-300">
+                Delete Profile
+                <Trash className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
         </form>
       </div>
     </div>
