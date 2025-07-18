@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { UserPlus, Edit, Trash2, ClipboardList, Plus } from 'lucide-react';
 
 const initialStaffList = [
-    { id: 1, name: 'Dr. Comfort Owusu', email: 'cowusu@gmail.com', role: 'Lab supervisor'},
-    { id: 2, name: 'Emmanuel Asare', role: 'Technician', email: 'easare@lab.com'},
-    { id: 3, name: 'Linda Mensah', role: 'Lab Assistant', email: 'lmensah@lab.com'},
+    { id: 1, name: 'Dr. Comfort Owusu', email: 'cowusu@gmail.com', role: 'Lab supervisor' },
+    { id: 2, name: 'Emmanuel Asare', role: 'Technician', email: 'easare@lab.com' },
+    { id: 3, name: 'Linda Mensah', role: 'Lab Assistant', email: 'lmensah@lab.com' },
 ];
 
 const roleOptions = [
@@ -21,8 +21,8 @@ export default function StaffManagement() {
     const [editId, setEditId] = useState(null);
     const [newStaff, setNewStaff] = useState({ name: '', email: '', role: '' });
     const [activeTab, setActiveTab] = useState('list');
-    // const [taskInput, setTaskInput] = useState('');
-    // const [assigningTaskToId, setAssigningTaskToId] = useState(null);
+    const [taskInput, setTaskInput] = useState('');
+    const [assigningTaskToId, setAssigningTaskToId] = useState(null);
 
     const handleAddStaff = () => {
         setNewStaff({ name: '', email: '', role: '' });
@@ -49,7 +49,7 @@ export default function StaffManagement() {
                 const newEntry = {
                     id: Math.max(...staffList.map(s => s.id), 0) + 1,
                     ...newStaff,
-                    
+
                 };
                 setStaffList([...staffList, newEntry]);
             }
@@ -65,27 +65,27 @@ export default function StaffManagement() {
         }
     };
 
-    // const handleTaskSubmit = (id) => {
-    //     if (taskInput.trim()) {
-    //         setStaffList(
-    //             staffList.map((s) =>
-    //                 s.id === id ? { ...s, tasks: [...(s.tasks || []), taskInput.trim()] } : s
-    //             )
-    //         );
-    //         setTaskInput('');
-    //         setAssigningTaskToId(null);
-    //     }
-    // };
+    const handleTaskSubmit = (id) => {
+        if (taskInput.trim()) {
+            setStaffList(
+                staffList.map((s) =>
+                    s.id === id ? { ...s, tasks: [...(s.tasks || []), taskInput.trim()] } : s
+                )
+            );
+            setTaskInput('');
+            setAssigningTaskToId(null);
+        }
+    };
 
-    // const handleRemoveTask = (staffId, taskIndex) => {
-    //     setStaffList(
-    //         staffList.map((s) =>
-    //             s.id === staffId
-    //                 ? { ...s, tasks: s.tasks.filter((_, idx) => idx !== taskIndex) }
-    //                 : s
-    //         )
-    //     );
-    // };
+    const handleRemoveTask = (staffId, taskIndex) => {
+        setStaffList(
+            staffList.map((s) =>
+                s.id === staffId
+                    ? { ...s, tasks: s.tasks.filter((_, idx) => idx !== taskIndex) }
+                    : s
+            )
+        );
+    };
 
     return (
         <div className="space-y-6 p-6 bg-gray-50 min-h-screen">
@@ -95,8 +95,8 @@ export default function StaffManagement() {
                     <button
                         onClick={() => setActiveTab('list')}
                         className={`px-4 py-2 rounded-lg transition-colors ${activeTab === 'list'
-                                ? 'bg-blue-600 text-white'
-                                : 'bg-white text-gray-700 hover:bg-gray-100'
+                            ? 'bg-blue-600 text-white'
+                            : 'bg-white text-gray-700 hover:bg-gray-100'
                             }`}
                     >
                         Staff List
@@ -104,8 +104,8 @@ export default function StaffManagement() {
                     <button
                         onClick={handleAddStaff}
                         className={`px-4 py-2 rounded-lg transition-colors ${activeTab === 'add'
-                                ? 'bg-blue-600 text-white'
-                                : 'bg-white text-gray-700 hover:bg-gray-100'
+                            ? 'bg-blue-600 text-white'
+                            : 'bg-white text-gray-700 hover:bg-gray-100'
                             }`}
                     >
                         <UserPlus className="inline-block w-4 h-4 mr-2" />
@@ -114,13 +114,24 @@ export default function StaffManagement() {
                     <button
                         onClick={() => setActiveTab('tasks')}
                         className={`px-4 py-2 rounded-lg transition-colors ${activeTab === 'tasks'
-                                ? 'bg-blue-600 text-white'
-                                : 'bg-white text-gray-700 hover:bg-gray-100'
+                            ? 'bg-blue-600 text-white'
+                            : 'bg-white text-gray-700 hover:bg-gray-100'
                             }`}
                     >
                         <ClipboardList className="inline-block w-4 h-4 mr-2" />
                         Assignments
+                    </button><button
+                        onClick={() => setActiveTab('assign')}
+                        className={`px-4 py-2 rounded-lg transition-colors ${activeTab === 'assign'
+                            ? 'bg-blue-600 text-white'
+                            : 'bg-white text-gray-700 hover:bg-gray-100'
+                            }`}
+                    >
+                        <Plus className="inline-block w-4 h-4 mr-2" />
+                        Assign Task
                     </button>
+
+
                 </div>
             </div>
 
@@ -212,7 +223,7 @@ export default function StaffManagement() {
                                 </tr>
                             </thead>
                             <tbody className="bg-white divide-y divide-gray-200">
-                                {staffList.map(({ id, name, role, email}) => (
+                                {staffList.map(({ id, name, role, email }) => (
                                     <tr key={id} className="hover:bg-gray-50">
                                         <td className="px-6 py-4 whitespace-nowrap">
                                             <div className="text-sm font-medium text-gray-900">{name}</div>
@@ -318,6 +329,66 @@ export default function StaffManagement() {
                     </div>
                 </div>
             )}
+
+            {activeTab === 'assign' && (
+                <div className="bg-white rounded-xl shadow-md p-6 max-w-xl mx-auto">
+                    <h3 className="text-lg font-semibold mb-4 text-gray-800">Assign Task to Staff</h3>
+
+                    <div className="space-y-4">
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                                Select Staff Member
+                            </label>
+                            <select
+                                onChange={(e) => setAssigningTaskToId(Number(e.target.value))}
+                                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                defaultValue=""
+                            >
+                                <option value="" disabled>Select staff</option>
+                                {staffList.map((staff) => (
+                                    <option key={staff.id} value={staff.id}>
+                                        {staff.name} — {staff.role}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                                Task Description
+                            </label>
+                            <textarea
+                                value={taskInput}
+                                onChange={(e) => setTaskInput(e.target.value)}
+                                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                rows="3"
+                                placeholder="Describe the task..."
+                            />
+                        </div>
+
+                        <div className="flex justify-end space-x-3">
+                            <button
+                                onClick={() => {
+                                    setAssigningTaskToId(null);
+                                    setTaskInput('');
+                                    setActiveTab('tasks');
+                                }}
+                                className="px-4 py-2 text-gray-600 border border-gray-300 rounded-md hover:bg-gray-50"
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                onClick={() => handleTaskSubmit(assigningTaskToId)}
+                                className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+                                disabled={!assigningTaskToId || !taskInput.trim()}
+                            >
+                                Assign Task
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
 
             {/* Task Assignment Modal */}
             {/* {assigningTaskToId !== null && (

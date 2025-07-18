@@ -6,7 +6,7 @@ import DashboardContent from '../components/DashboardContent';
 import StaffManagement from '../components/StaffManagement';
 import InventoryManagement from '../components/InventoryManagement';
 import TestManagement from '../components/TestManagement';
-import AnalyticsReports from '../components/AnalyticsReports';
+// import AnalyticsReports from '../components/AnalyticsReports';
 import SettingsPanel from '../components/SettingsPanel';
 
 export default function Dashboard() {
@@ -22,7 +22,7 @@ export default function Dashboard() {
           {activeMenu === 'staff' && <StaffManagement />}
           {activeMenu === 'tests' && <TestManagement />}
           {activeMenu === 'inventory' && <InventoryManagement />}
-          {activeMenu === 'analytics' && <AnalyticsReports />}
+          {/* {activeMenu === 'analytics' && <AnalyticsReports />} */}
           {activeMenu === 'settings' && <SettingsPanel />}
         </div>
       </div>

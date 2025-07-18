@@ -6,7 +6,7 @@ const menuItems = [
   { id: 'staff', label: 'Staff Management', icon: Users },
   { id: 'tests', label: 'Tests', icon: TestTube },
   { id: 'inventory', label: 'Inventory', icon: Package },
-  { id: 'analytics', label: 'Analytics', icon: ChartBar },
+  // { id: 'analytics', label: 'Analytics', icon: ChartBar },
   { id: 'settings', label: 'Settings', icon: Settings },
 ];
 

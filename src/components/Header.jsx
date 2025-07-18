@@ -22,7 +22,7 @@ export default function Header({ activeMenu }) {
     staff: 'Staff Management',
     tests: 'Test Management',
     inventory: 'Inventory Tracking',
-    analytics: 'Analytics & Reports',
+    // analytics: 'Analytics & Reports',
     settings: 'Settings & Preferences',
   };
 
