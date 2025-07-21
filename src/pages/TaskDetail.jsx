@@ -27,7 +27,7 @@ export default function TaskDetail() {
         // Mock data - replace with your actual API call
         const mockTask = {
           id: id,
-          title: 'Complete Blood Count (CBC)',
+          title: 'Hepatitis B',
           patient: {
             name: 'John Doe',
             age: 32,
@@ -36,14 +36,14 @@ export default function TaskDetail() {
           },
           testType: 'Blood Test',
           status: 'pending',
-          priority: 'high',
-          requestedBy: 'Dr. Sarah Wilson',
+          priority: 'medium',
+          requestedBy: 'MLS Sarah Wilson',
           requestedDate: '2024-01-15',
           estimatedDuration: '30 minutes',
           department: 'Hematology',
-          description: 'Complete blood count test to check for anemia, infection, and other blood disorders.',
-          instructions: 'Patient should be fasting for 8-12 hours before the test. Handle blood samples with care.',
-          notes: 'Patient has a history of fainting during blood draws. Please ensure they are seated comfortably.',
+          description: 'Hepatitis B test to check for infection.',
+          instructions: ' Handle blood samples with care.',
+          notes: 'Walk-in patient presents for wellness screening. No known medical history provided.',
           equipment: ['Blood collection tubes', 'Needle', 'Tourniquet', 'Alcohol swabs'],
           results: null
         };
@@ -278,10 +278,6 @@ export default function TaskDetail() {
                     <p className="text-green-800 font-medium">Task Completed</p>
                   </div>
                 )}
-                
-                <button className="w-full bg-gray-100 text-gray-700 py-3 px-4 rounded-lg hover:bg-gray-200 transition-colors font-medium">
-                  Add Notes
-                </button>
                 
                 <button className="w-full bg-gray-100 text-gray-700 py-3 px-4 rounded-lg hover:bg-gray-200 transition-colors font-medium">
                   Print Details
