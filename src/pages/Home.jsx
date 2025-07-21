@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { CalendarCheck, Bell, Timer, UserCheck, FlaskConical, Users, Clock, LineChart } from 'lucide-react';
+import { CalendarCheck, Bell, Timer, Tally1Icon, Tally2, Tally3, UserCheck, FlaskConical, Users, Clock, LineChart } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { useState } from 'react';
 import { Link } from 'react-router';
+import { p, title } from 'motion/react-client';
 
 export default function Home() {
   useEffect(() => {
@@ -79,6 +80,41 @@ export default function Home() {
     },
   ];
 
+  const services = [
+    {
+      title: "Routine & Specialized Testing",
+      icon: <Tally1Icon className="w-6 h-6 sm:w-8 sm:h-8 text-center items-center text-gray-400" />,
+      points: [
+        "Blood Tests",
+        "Urine Analysis",
+        "Microbiology",
+        "Pathology",
+        "Molecular Diagnostics"
+      ],
+    },
+    {
+      title: "COVID-19 & Infectious Disease Testing with Same-Day Results" ,
+      icon: <Tally2 className="w-6 h-6 sm:w-8 sm:h-8 text-center items-center text-gray-400" />,
+      points: [
+        "Rapid Antigen Tests",
+        "PCR Testing",
+        "Antibody Testing",
+        "Influenza Testing",
+      ],
+    },
+    {
+      title: "Health Screening Packages",
+      icon: < Tally3 className="w-6 h-6 sm:w-8 sm:h-8 text-center items-center text-gray-400" />,
+      points: [
+        "Rapid Antigen Tests",
+        "PCR Testing",
+        "Antibody Testing",
+        "Influenza Testing",
+      ],
+    },
+
+  ];
+
   return (
     <>
       <Navbar />
@@ -89,10 +125,10 @@ export default function Home() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 lg:gap-10">
             <div className="w-full lg:w-1/2 text-center lg:text-left px-2 sm:px-4">
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 leading-tight">
-                Streamline Your <br className="hidden sm:block" />Lab Visits
+                Welcome to <br className="hidden sm:block" />Lab Sync
               </h2>
               <p className="mb-4 sm:mb-6 text-sm sm:text-base lg:text-lg font-normal leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                Smart laboratory management system that reduces wait times, improves efficiency, and enhances patient experience through real-time queue management and appointment booking.
+                At LabSync, we are committed to delivering fast, accurate, and reliable laboratory testing services to support patient care and clinical decision-making. Whether you’re a healthcare provider, hospital, or individual patient, our state-of-the-art facility and expert team ensure top-tier diagnostic solutions.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center justify-center lg:justify-start">
                 <Link to="/sign-up">
@@ -145,6 +181,8 @@ export default function Home() {
           </div>
         </section>
 
+
+
         {/* How It Works */}
         <section data-aos="fade-up" className="bg-white py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 text-center">
           <div className="container mx-auto">
@@ -165,6 +203,37 @@ export default function Home() {
                   </h3>
                   <ul data-aos="zoom-in" className="text-sm sm:text-base space-y-1 sm:space-y-2 text-center">
                     {feature.points.map((point, i) => (
+                      <li key={i} className="flex items-center justify-center gap-2">
+                        <span>•</span>
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section data-aos="fade-up" className="bg-white py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 text-center">
+          <div className="container mx-auto">
+            <h2 data-aos="zoom-in" className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-2 sm:mb-4">
+              Our Services
+            </h2>
+            <p data-aos="zoom-in" className="text-gray-500 text-base sm:text-lg lg:text-xl max-w-3xl mx-auto">
+              Comprehensive Diagnostic Services Designed With Your Health in Mind
+            </p>
+            <div className="mt-8 sm:mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 max-w-6xl mx-auto">
+              {services.map((service, index) => (
+                <div key={index} className="flex flex-col items-center text-gray-700 p-4 sm:p-6 rounded-lg hover:bg-gray-50 transition duration-300">
+                  <div className="p-3 sm:p-4 lg:p-5 rounded-full mb-3 sm:mb-4">
+                    {service.icon}
+                  </div>
+                  <h3 data-aos="zoom-in" className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3">
+                    {service.title}
+                  </h3>
+                  <ul data-aos="zoom-in" className="text-sm sm:text-base space-y-1 sm:space-y-2 text-center">
+                    {service.points.map((point, i) => (
                       <li key={i} className="flex items-center justify-center gap-2">
                         <span>•</span>
                         <span>{point}</span>
