@@ -35,6 +35,9 @@ export default function SignUp() {
         console.log('Form submitted:', formData);
     };
 
+    const isFormValid = formData.fullName && formData.email && formData.password && formData.confirmPassword && formData.password === formData.confirmPassword && formData.agreeTerms;
+
+
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
             <div className="w-full max-w-md bg-white p-6 rounded-lg shadow">
@@ -122,7 +125,9 @@ export default function SignUp() {
 
                     <button
                         type="submit"
-                        className="w-full bg-green-500 hover:bg-green-600 text-white py-2 rounded text-sm font-medium transition">
+                        disabled={!isFormValid}
+                        className={`w-full py-2 rounded text-sm font-medium transition 
+        ${isFormValid ? 'bg-green-500 hover:bg-green-600 text-white' : 'bg-gray-300 text-gray-600 cursor-not-allowed'}`}>
                         Sign Up
                     </button>
                     <p className="text-center text-sm text-gray-500">
