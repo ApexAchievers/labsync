@@ -1,13 +1,13 @@
 import React from 'react';
-import { ChartLine, Users, Package, TestTube, ChartBar, Settings, FlaskConical } from 'lucide-react';
+import { ChartLine, Users, Package, TestTube, ChartBar, LogOutIcon, Settings, FlaskConical,  } from 'lucide-react';
 
 const menuItems = [
   { id: 'dashboard', label: 'Dashboard', icon: ChartLine },
   { id: 'staff', label: 'Staff Management', icon: Users },
-  { id: 'tests', label: 'Tests', icon: TestTube },
-  { id: 'inventory', label: 'Inventory', icon: Package },
-  // { id: 'analytics', label: 'Analytics', icon: ChartBar },
+  { id: 'tests', label: 'Test Management', icon: TestTube },
+  { id: 'user', label: 'All Users', icon: Users },
   { id: 'settings', label: 'Settings', icon: Settings },
+  { id: 'Logout', label: 'logout', icon: LogOutIcon },
 ];
 
 export default function Sidebar({ activeMenu, setActiveMenu }) {
