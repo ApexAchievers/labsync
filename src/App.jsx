@@ -13,6 +13,9 @@ import NotFound from "./pages/NotFound";
 import AppointmentPage from "./pages/AppointmentPage";
 import Contact from "./pages/Contact";
 import ViewAppointment from "./pages/ViewAppointment";
+import OTP from "./pages/OTP";
+import { ToastContainer } from "react-toastify";
+
 
 function App() {
   const [count, setCount] = useState(0);
@@ -31,10 +34,12 @@ function App() {
     { path: "/view-appointment", element: <ViewAppointment /> },
     { path: "/contact", element: <Contact /> },
     { path: "*", element: <NotFound /> },
+    { path: "/otp", element: <OTP /> },
   ]);
 
   return (
     <>
+      <ToastContainer />
       <RouterProvider router={labSyncRouter} />
     </>
   );
