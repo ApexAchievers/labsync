@@ -11,6 +11,10 @@
   },
   "dependencies": {
     "@formspree/react": "^3.0.0",
+    "@fullcalendar/daygrid": "^6.1.18",
+    "@fullcalendar/interaction": "^6.1.18",
+    "@fullcalendar/react": "^6.1.18",
+    "@fullcalendar/timegrid": "^6.1.18",
     "aos": "^2.3.4",
     "axios": "^1.10.0",
     "clsx": "^2.1.1",

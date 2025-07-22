@@ -38,10 +38,10 @@ const PatientDashboard = () => {
               </Link>
             </div>
 
-            {/* Queue Tracker */}
+            {/* Queue Tracker
             <div className="bg-white shadow-md rounded-lg p-5">
               <QueueTrackerWidget />
-            </div>
+            </div> */}
 
             {/* Notifications */}
             <div className="bg-white shadow-md rounded-lg p-5">
