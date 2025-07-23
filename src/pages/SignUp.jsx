@@ -18,10 +18,10 @@ export default function SignUp() {
   });
 
   const handleChange = (e) => {
-    const { fullName, value, type, checked } = e.target;
+    const { name, value, type, checked } = e.target;
     setFormData({
       ...formData,
-      [fullName]: type === "checkbox" ? checked : value,
+      [name]: type === "checkbox" ? checked : value,
     });
   };
 
@@ -46,29 +46,26 @@ export default function SignUp() {
         confirmPassword: formData.confirmPassword,
         acceptedTerms: formData.acceptTerms,
       });
-      localStorage.setItem("email", response.data.email);
-      const result = await response.json();
+      
+      const result = response.data;
 
-      if (response.ok) {
-        toast.success("Signup successful!");
-        console.log(result);
-        // Optionally reset the form
-        setFormData({
-          fullName: "",
-          email: "",
-          password: "",
-          confirmPassword: "",
-          acceptTerms: false,
-        });
-      } else {
-        toast.error(result.message || "Signup failed!");
-      }
-
-      navigate("/otp");
+      if (response.status === 200 || response.status === 201) {
+        toast.success(result.message || "Signup successful!");
+        localStorage.setItem("email", response.data.email);
+        navigate("/otp");
+      } 
+      
+      
       
     } catch (error) {
       console.error("Error submitting form:", error);
-      toast.error("An error occurred. Please try again later.");
+      
+      const message =
+      error.response?.data?.message ||
+      error.message ||
+      "An error occured. Please try again.";
+      toast.error(message);
+     
     }
   };
 
