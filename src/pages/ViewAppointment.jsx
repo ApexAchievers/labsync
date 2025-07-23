@@ -60,7 +60,7 @@ export default function ViewAppointment() {
               Appointment Date
             </label>
             <input
-              type="date"
+              type=""
               name="date"
               className="w-full border border-gray-300 px-4 py-2 rounded-md focus:ring-2 focus:ring-blue-500 outline-none"
             />
@@ -71,7 +71,7 @@ export default function ViewAppointment() {
               Appointment Time
             </label>
             <input
-              type="time"
+              type=""
               name="time"
               className="w-full border border-gray-300 px-4 py-2 rounded-md focus:ring-2 focus:ring-blue-500 outline-none"
             />
