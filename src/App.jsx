@@ -15,6 +15,8 @@ import Contact from "./pages/Contact";
 import ViewAppointment from "./pages/ViewAppointment";
 import OTP from "./pages/OTP";
 import SelectDate from "./pages/SelectDate";
+import EditProfileTech from "./pages/EditProfileTech";
+import ProfileTech from "./pages/ProfileTech";
 import { ToastContainer } from "react-toastify";
 
 
@@ -37,6 +39,8 @@ function App() {
     { path: "/contact", element: <Contact /> },
     { path: "*", element: <NotFound /> },
     { path: "/otp", element: <OTP /> },
+    { path: "/edit-profile-tech", element: <EditProfileTech /> },
+    { path: "/profile-tech", element: <Profile /> },
   ]);
 
   return (

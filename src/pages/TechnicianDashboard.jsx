@@ -1,6 +1,7 @@
 import React from "react";
 import Sidebar from "../components/SideBarTech";  
 import Navbar from "../components/Navbar";
+import { Link } from "react-router";
 import { Clock, Loader, CheckCircle, CircleHelp, ListTodo, Pencil, } from "lucide-react";
 
 
@@ -48,27 +49,33 @@ export default function TechnicianDashboard() {
         <div className="bg-white shadow rounded-lg p-6">
           <div className="flex items-center gap-2 mb-4">
             <ListTodo className="w-5 h-5 text-gray-600" />
-            <h2 className="text-lg font-semibold text-gray-800">Task Queue</h2>
+            <h2 className="text-lg font-semibold text-gray-800">Test Queue</h2>
           </div>
           <ul className="space-y-4">
             <li className="p-4 rounded-md border-l-4 border-yellow-400 bg-yellow-50">
+               <p className="font-semibold text-gray-700">Patient Name</p>
               <p className="font-semibold text-gray-700">Sample #LAB-2024-001</p>
-              <p className="text-sm text-gray-500">Blood Test - Complete Panel</p>
+              {/* <p className="text-sm text-gray-500">Blood Test - Complete Panel</p> */}
               <span className="text-xs text-yellow-600">Pending</span>
             </li>
             <li className="p-4 rounded-md border-l-4 border-blue-400 bg-blue-50">
+               <p className="font-semibold text-gray-700">Patient Name</p>
               <p className="font-semibold text-gray-700">Sample #LAB-2024-002</p>
-              <p className="text-sm text-gray-500">Urine Analysis</p>
+              {/* <p className="text-sm text-gray-500">Urine Analysis</p> */}
               <span className="text-xs text-blue-600">In Progress</span>
             </li>
-            <li className="p-4 rounded-md border-l-4 border-green-400 bg-green-50">
+            <Link to={'/tasks/id'}>
+            <li className="p-4 rounded-md border-l-4 border-green-400 bg-green-50 pointer-cursor">
+               <p className="font-semibold text-gray-700">Patient Name</p>
               <p className="font-semibold text-gray-700">Sample #LAB-2024-003</p>
-              <p className="text-sm text-gray-500">COVID-19 PCR Test</p>
+              {/* <p className="text-sm text-gray-500">COVID-19 PCR Test</p> */}
               <span className="text-xs text-green-600">Done</span>
             </li>
-            <li className="p-4 rounded-md border-l-4 border-yellow-400 bg-yellow-50">
+            </Link>
+            <li className="p-4 rounded-md border-l-4 border-yellow-400 bg-yellow-50 mt-4">
+               <p className="font-semibold text-gray-700">Patient Name</p>
               <p className="font-semibold text-gray-700">Sample #LAB-2024-004</p>
-              <p className="text-sm text-gray-500">Lipid Profile</p>
+              {/* <p className="text-sm text-gray-500">Lipid Profile</p> */}
               <span className="text-xs text-yellow-600">Pending</span>
             </li>
           </ul>
@@ -111,7 +118,7 @@ export default function TechnicianDashboard() {
       </div>
 
       {/* Task History */}
-      <div className="bg-white shadow rounded-lg p-6">
+      {/* <div className="bg-white shadow rounded-lg p-6">
         <div className="flex justify-between items-center mb-2">
           <div className="flex items-center gap-2">
             <Clock className="w-5 h-5 text-gray-600" />
@@ -122,7 +129,7 @@ export default function TechnicianDashboard() {
           </button>
         </div>
         <p className="text-sm text-gray-500">View your complete task history and performance metrics</p>
-      </div>
+      </div> */}
     </main>
     </div>
     </>
