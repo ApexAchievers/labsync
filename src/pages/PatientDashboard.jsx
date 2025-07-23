@@ -2,7 +2,6 @@ import React from 'react';
 import SideBar from '../components/SideBar';
 import { Link } from 'react-router-dom';
 import { FaCalendarAlt } from 'react-icons/fa';
-import QueueTrackerWidget from '../components/QueueTrackerWidget';
 import { Bell, Check } from 'lucide-react';
 
 const PatientDashboard = () => {

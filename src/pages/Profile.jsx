@@ -19,7 +19,6 @@ export default function Profile() {
             <input
               type="text"
               name="name"
-              placeholder="Full name"
               className="w-full border border-gray-300 rounded-md px-4 py-2 text-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-400"
             />
           </div>
@@ -32,7 +31,6 @@ export default function Profile() {
             <input
               type="password"
               name="password"
-              placeholder="••••••••"
               className="w-full border border-gray-300 rounded-md px-4 py-2 text-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-400"
             />
           </div>
@@ -45,7 +43,6 @@ export default function Profile() {
             <input
               type="email"
               name="email"
-              placeholder="example@mail.com"
               className="w-full border border-gray-300 rounded-md px-4 py-2 text-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-400"
             />
           </div>
@@ -58,7 +55,6 @@ export default function Profile() {
             <input
               type="tel"
               name="phone"
-              placeholder="+234 801 234 5678"
               className="w-full border border-gray-300 rounded-md px-4 py-2 text-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-400"
             />
           </div>
