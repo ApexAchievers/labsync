@@ -13,6 +13,10 @@ import NotFound from "./pages/NotFound";
 import AppointmentPage from "./pages/AppointmentPage";
 import Contact from "./pages/Contact";
 import ViewAppointment from "./pages/ViewAppointment";
+import OTP from "./pages/OTP";
+import SelectDate from "./pages/SelectDate";
+import { ToastContainer } from "react-toastify";
+
 
 function App() {
   const [count, setCount] = useState(0);
@@ -28,13 +32,16 @@ function App() {
     { path: "/tasks/:id", element: <TaskDetail /> },
     { path: "manager-dashboard", element: <ManagerDashboard /> },
     { path: "/appointment-page", element: <AppointmentPage /> },
+    { path: "/select-date", element: <SelectDate /> },
     { path: "/view-appointment", element: <ViewAppointment /> },
     { path: "/contact", element: <Contact /> },
     { path: "*", element: <NotFound /> },
+    { path: "/otp", element: <OTP /> },
   ]);
 
   return (
     <>
+      <ToastContainer />
       <RouterProvider router={labSyncRouter} />
     </>
   );
