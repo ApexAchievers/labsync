@@ -7,12 +7,6 @@ const statusStyles = {
   completed: 'bg-green-100 text-green-800 border-green-200',
 };
 
-const priorityStyles = {
-  high: 'bg-red-100 text-red-800 border-red-200',
-  medium: 'bg-yellow-100 text-yellow-800 border-yellow-200',
-  low: 'bg-green-100 text-green-800 border-green-200',
-};
-
 export default function TaskDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -34,13 +28,11 @@ export default function TaskDetail() {
             gender: 'Male',
             patientId: 'PAT-001'
           },
-          testType: 'Blood Test',
+
           status: 'pending',
-          priority: 'medium',
-          requestedBy: 'MLS Sarah Wilson',
+          requestedBy: 'Laboratory Department',
           requestedDate: '2024-01-15',
           estimatedDuration: '30 minutes',
-          department: 'Hematology',
           description: 'Hepatitis B test to check for infection.',
           instructions: ' Handle blood samples with care.',
           notes: 'Walk-in patient presents for wellness screening. No known medical history provided.',
@@ -125,9 +117,6 @@ export default function TaskDetail() {
               Back to Dashboard
             </button>
             <div className="flex items-center space-x-3">
-              <span className={`px-3 py-1 rounded-full text-sm font-semibold border ${priorityStyles[task.priority]}`}>
-                {task.priority.toUpperCase()} PRIORITY
-              </span>
               <span className={`px-3 py-1 rounded-full text-sm font-semibold border ${statusStyles[task.status]}`}>
                 {task.status.replace('_', ' ').toUpperCase()}
               </span>
@@ -135,7 +124,6 @@ export default function TaskDetail() {
           </div>
           
           <h1 className="text-3xl font-bold text-gray-800 mb-2">{task.title}</h1>
-          <p className="text-gray-600">{task.testType} • {task.department}</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -199,28 +187,6 @@ export default function TaskDetail() {
               </div>
             </div>
 
-            {/* Notes Section */}
-            <div className="bg-white rounded-lg shadow p-6">
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center">
-                  <svg className="w-6 h-6 text-yellow-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
-                  </svg>
-                  <h2 className="text-xl font-semibold text-gray-800">Special Notes</h2>
-                </div>
-                <button
-                  onClick={() => setShowNotes(!showNotes)}
-                  className="text-blue-500 hover:text-blue-700 text-sm font-medium"
-                >
-                  {showNotes ? 'Hide' : 'Show'} Notes
-                </button>
-              </div>
-              {showNotes && (
-                <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-                  <p className="text-yellow-800">{task.notes}</p>
-                </div>
-              )}
-            </div>
           </div>
 
           {/* Sidebar */}
@@ -240,10 +206,6 @@ export default function TaskDetail() {
                 <div>
                   <p className="text-sm text-gray-500">Estimated Duration</p>
                   <p className="font-medium text-gray-800">{task.estimatedDuration}</p>
-                </div>
-                <div>
-                  <p className="text-sm text-gray-500">Department</p>
-                  <p className="font-medium text-gray-800">{task.department}</p>
                 </div>
               </div>
             </div>
@@ -279,9 +241,6 @@ export default function TaskDetail() {
                   </div>
                 )}
                 
-                <button className="w-full bg-gray-100 text-gray-700 py-3 px-4 rounded-lg hover:bg-gray-200 transition-colors font-medium">
-                  Print Details
-                </button>
               </div>
             </div>
           </div>
