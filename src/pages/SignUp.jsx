@@ -6,6 +6,8 @@ import { toast } from "react-toastify";
 import { apiClient } from "../api/client";
 import { useNavigate } from "react-router";
 import Signuppic from "../assets/images/labpic.jpg";
+import { Link } from "react-router";
+import { b } from "motion/react-client";
 
 export default function SignUp() {
     const navigate = useNavigate();
@@ -17,12 +19,15 @@ export default function SignUp() {
         confirmPassword: "",
         acceptTerms: false,
     });
+    console.log("Form Data:", formData);
 
     const handleChange = (e) => {
-        const { fullName, value, type, checked } = e.target;
+        const { name, value, type, checked } = e.target;
+        
+
         setFormData({
             ...formData,
-            [fullName]: type === "checkbox" ? checked : value,
+            [name]: type === "checkbox" ? checked : value,
         });
     };
 
@@ -47,10 +52,12 @@ export default function SignUp() {
                 confirmPassword: formData.confirmPassword,
                 acceptedTerms: formData.acceptTerms,
             });
-            localStorage.setItem("email", response.data.email);
-            const result = await response.json();
+            console.log(response);
+            // localStorage.setItem("email", response.data.email);
+            
+            const result = await response.data;
 
-            if (response.ok) {
+            if (response.status === 201) {
                 toast.success("Signup successful!");
                 console.log(result);
                 // Optionally reset the form
@@ -212,7 +219,9 @@ export default function SignUp() {
                         <p className="text-center text-sm text-gray-500">
                             Already have an account?{" "}
                             <span className="text-blue-600 font-medium cursor-pointer">
+                               <Link to="/login">
                                 Log in
+                                </Link>
                             </span>
                         </p>
                         <div
