@@ -1,6 +1,7 @@
 import React from 'react';
 import Google from "../assets/images/google icon removed.png";
 import { FlaskConical } from 'lucide-react';
+import { Link } from 'react-router';
 
 export default function LoginPage() {
     return (
@@ -55,9 +56,12 @@ export default function LoginPage() {
                 {/* Sign up link */}
                 <p className="text-center text-sm text-gray-500">
                     Don’t have an account?{' '}
-                    <a href="#" className="text-green-500 hover:underline font-medium">
-                        Sign up
-                    </a>
+                    <div className="text-green-500 hover:underline font-medium">
+                        <Link to={'/sign-up'}>
+                            Sign up
+                        </Link>
+                    </div>
+
                 </p>
 
                 {/* Or continue with */}
@@ -68,11 +72,14 @@ export default function LoginPage() {
                 </div>
 
                 {/* Google Sign In */}
-                <button type="button" className="w-full flex items-center justify-center gap-2 border border-gray-300 rounded-md py-2 text-sm font-medium text-white hover:bg-green-600 transition duration-150 bg-green-500 "
-                    onClick={() => console.log('Sign up with Google')}  >
+                <div
+                    className="flex items-center justify-center gap-2 text-green-600 cursor-pointer"
+                    onClick={() => console.log('Sign in with Google')}
+                >
                     <img src={Google} alt="Google" className="w-5 h-5" />
-                    Sign In with Google
-                </button>
+                    <span className="text-sm font-medium">Sign in with Google</span>
+                </div>
+
             </div>
         </div>
     );
