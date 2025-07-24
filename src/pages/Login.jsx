@@ -1,6 +1,7 @@
 import React from "react";
 import Google from "../assets/images/google icon removed.png";
 import { FlaskConical } from 'lucide-react';
+import { useNavigate } from "react-router";
 
 export default function LoginPage() {
   const navigate = useNavigate();
