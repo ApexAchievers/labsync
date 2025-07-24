@@ -4,9 +4,7 @@ import Sidebar from '../components/ManagerSidebar';
 import Header from '../components/Header';
 import DashboardContent from '../components/DashboardContent';
 import StaffManagement from '../components/StaffManagement';
-import InventoryManagement from '../components/InventoryManagement';
 import TestManagement from '../components/TestManagement';
-// import AnalyticsReports from '../components/AnalyticsReports';
 import SettingsPanel from '../components/SettingsPanel';
 
 export default function Dashboard() {
@@ -21,9 +19,8 @@ export default function Dashboard() {
           {activeMenu === 'dashboard' && <DashboardContent />}
           {activeMenu === 'staff' && <StaffManagement />}
           {activeMenu === 'tests' && <TestManagement />}
-          {activeMenu === 'inventory' && <InventoryManagement />}
-          {/* {activeMenu === 'analytics' && <AnalyticsReports />} */}
-          {activeMenu === 'settings' && <SettingsPanel />}
+          {activeMenu === 'profile' && <SettingsPanel section="profile" />}
+          {activeMenu === 'notifications' && <SettingsPanel section="notifications" />}
         </div>
       </div>
     </div>

@@ -109,7 +109,7 @@ export default function StaffManagement() {
                             }`}
                     >
                         <UserPlus className="inline-block w-4 h-4 mr-2" />
-                        Add Staff
+                        Add Technician
                     </button>
                     <button
                         onClick={() => setActiveTab('tasks')}
@@ -120,18 +120,8 @@ export default function StaffManagement() {
                     >
                         <ClipboardList className="inline-block w-4 h-4 mr-2" />
                         Assignments
-                    </button><button
-                        onClick={() => setActiveTab('assign')}
-                        className={`px-4 py-2 rounded-lg transition-colors ${activeTab === 'assign'
-                            ? 'bg-blue-600 text-white'
-                            : 'bg-white text-gray-700 hover:bg-gray-100'
-                            }`}
-                    >
-                        <Plus className="inline-block w-4 h-4 mr-2" />
-                        Assign Task
                     </button>
-
-
+                    
                 </div>
             </div>
 
