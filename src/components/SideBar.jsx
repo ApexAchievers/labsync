@@ -1,11 +1,10 @@
 // components/Sidebar.jsx
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
-  House,
+  LayoutDashboard,
   CalendarDays,
-  FileUser,
-  Clock,
+  LogOut,
   UserPen,
   FlaskConical,
   Settings,
@@ -13,11 +12,24 @@ import {
 } from "lucide-react";
 
 const SideBar = () => {
+  const navigate = useNavigate();
   const [settingsOpen, setSettingsOpen] = useState(false); // 🔄 Dropdown state
-
+   
   const toggleSettings = () => {
     setSettingsOpen((prev) => !prev);
   };
+
+  const handleLogout = () => {
+  // Clear any auth tokens or user data
+  localStorage.removeItem("token"); // Clear token
+  localStorage.removeItem("email"); // Clear email
+  localStorage.removeItem("user");
+
+
+  // Redirect to home
+  navigate("/");
+};
+
 
   return (
     <div className="w-64 h-screen bg-white shadow-lg p-4 flex flex-col">
@@ -32,25 +44,17 @@ const SideBar = () => {
 
       {/* Sidebar Items */}
       <div className="space-y-4">
-        <div className="flex items-center space-x-2 text-gray-700 hover:text-blue-600 cursor-pointer">
-          <House className="w-5 h-5" />
+        <Link to={'/patient-dashboard'} className="flex items-center space-x-2 text-gray-700 hover:text-blue-600 cursor-pointer">
+          <LayoutDashboard className="w-5 h-5" />
           <span>Dashboard</span>
-        </div>
-
-        <Link to={'/view-appointment'} className="flex items-center space-x-2 text-gray-700 hover:text-blue-600 cursor-pointer">
-          <CalendarDays className="w-5 h-5" />
-          <span>Appointment</span>
         </Link>
 
-        {/* <div className="flex items-center space-x-2 text-gray-700 hover:text-blue-600 cursor-pointer">
-          <FileUser className="w-5 h-5" />
-          <span>Test Result</span>
-        </div>
+        <Link to={"/patient-dashboard/view-appointment"} className="flex items-center space-x-2 text-gray-700 hover:text-blue-600 cursor-pointer">
+          <CalendarDays className="w-5 h-5" />
+          <span>Veiw Appointment</span>
+        </Link>
 
-        <div className="flex items-center space-x-2 text-gray-700 hover:text-blue-600 cursor-pointer">
-          <Clock className="w-5 h-5" />
-          <span>Queue Status</span>
-        </div> */}
+
 
         {/* Settings with Dropdown */}
         <div className="space-y-2">
@@ -78,6 +82,12 @@ const SideBar = () => {
               </Link>
             </div>
           )}
+        </div>
+
+        <div onClick={handleLogout}
+        className="flex items-center space-x-2 text-gray-700 hover:text-blue-600 cursor-pointer">
+          <LogOut className="w-5 h-5" />
+          <span>Logout</span>
         </div>
       </div>
     </div>

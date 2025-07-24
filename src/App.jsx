@@ -20,7 +20,8 @@ import ProfileTech from "./pages/ProfileTech";
 import { ToastContainer } from "react-toastify";
 import TechPage from "./pages/TechPage";
 import TechPassword from "./pages/TechPassword";
-
+import DashboardHome from "./pages/DashboardHome";
+import EditAppointment from "./pages/EditAppointment";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -31,13 +32,36 @@ function App() {
     { path: "/sign-up", element: <SignUp /> },
     { path: "/profile", element: <Profile /> },
     { path: "/edit-profile", element: <EditProfile /> },
-    { path: "patient-dashboard", element: <PatientDashboard /> },
+    {
+      path: "patient-dashboard",
+      element: <PatientDashboard />,
+      children: [
+        {
+          index: true,
+          element: <DashboardHome />, // Extracted welcome dashboard component
+        },
+        {
+          path: "view-appointment",
+          element: <ViewAppointment />,
+        },
+        {
+          path: "appointment-page",
+          element: <AppointmentPage />,
+        },
+        {
+          path: "edit-appointment",
+          element:  <EditAppointment />,
+        }
+        // Add more nested routes if needed
+      ],
+    },
+
     { path: "technician-dashboard", element: <TechnicianDashboard /> },
     { path: "/tasks/:id", element: <TaskDetail /> },
     { path: "manager-dashboard", element: <ManagerDashboard /> },
-    { path: "/appointment-page", element: <AppointmentPage /> },
+    
     { path: "/select-date", element: <SelectDate /> },
-    { path: "/view-appointment", element: <ViewAppointment /> },
+    
     { path: "/contact", element: <Contact /> },
     { path: "*", element: <NotFound /> },
     { path: "/otp", element: <OTP /> },
