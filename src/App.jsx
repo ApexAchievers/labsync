@@ -21,6 +21,8 @@ import { ToastContainer } from "react-toastify";
 import TechPage from "./pages/TechPage";
 import DashboardHome from "./pages/DashboardHome";
 import EditAppointment from "./pages/EditAppointment";
+import SupportPage from "./pages/SupportPage";
+
 
 function App() {
   const [count, setCount] = useState(0);
@@ -67,6 +69,7 @@ function App() {
     { path: "/edit-profile-tech", element: <EditProfileTech /> },
     { path: "/profile-tech", element: <ProfileTech /> },
     { path: "/tech-page/:id", element: <TechPage /> },
+    { path: "/support-page", element: <SupportPage /> },
    
   ]);
 

@@ -40,7 +40,7 @@ export default function TechPage() {
         <div className="min-h-screen flex items-center justify-center bg-gray-100">
             <div className="w-full max-w-md bg-white p-6 rounded-lg shadow-md">
                 <h2 className="text-2xl font-bold mb-6 text-center text-blue-600">Set New Password</h2>
-                <form className="space-y-4">
+                <form action={acceptInvite}className="space-y-4">
                     <div>
                         <label className="block text-sm font-medium text-gray-600">New Password</label>
                         <input
@@ -59,7 +59,7 @@ export default function TechPage() {
                     </div>
                     <div className="text-center">
                         <Link to={'/login'}>
-                            <button onClick={acceptInvite}
+                            <button 
                                 type="submit"
                                 className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition" >
                                 Login
