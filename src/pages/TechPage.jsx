@@ -1,12 +1,40 @@
 import React from "react";
 import { Link } from "react-router";
 import { useParams } from 'react-router-dom';
+import { apiClient } from "../api/client";
+import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
+import axios from "axios";
+
 
 
 
 export default function TechPage() {
     const { id }= useParams();
     console.log("Tech ID:", id);
+
+    
+        const acceptInvite = async (data) => {
+            try {
+              const response = await apiClient.post("/api/technician/accept-invitation", data, {
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              });
+              localStorage.setItem("token", response.data.token);
+              toast.success(response.data?.message || "Password Set successfully! Please Login");
+              navigate("/login");
+            } catch (error) {
+              const errorMessage =
+                error.response?.data?.message ||
+                "Fail to set password. Please try again.";
+              toast.error(errorMessage);
+              console.log(error);
+            }
+          };
+    
+
+
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100">
@@ -31,7 +59,7 @@ export default function TechPage() {
                     </div>
                     <div className="text-center">
                         <Link to={'/login'}>
-                            <button
+                            <button onClick={acceptInvite}
                                 type="submit"
                                 className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition" >
                                 Login
