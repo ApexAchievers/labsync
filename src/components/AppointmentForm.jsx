@@ -5,56 +5,93 @@ const AppointmentForm = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="max-w-4xl mx-auto p-8 mt-10 bg-white rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold mb-6 text-center text-black">
+    <div className="max-w-4xl mx-auto mt-12 bg-white rounded-2xl shadow-lg p-8 md:p-12">
+      <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center text-black">
         Fill Out This Form To Book an Appointment
       </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Left Column */}
-        <div className="flex flex-col space-y-2">
-          <label className="font-medium">Full Name</label>
-          <input type="text" name="name" className="border px-4 py-2 rounded-md" />
+      <form className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 text-sm md:text-base">
+        {/* Full Name */}
+        <div>
+          <label className="block mb-1 font-medium text-gray-700">Full Name</label>
+          <input
+            type="text"
+            name="name"
+            placeholder="Enter your full name"
+            className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+        </div>
 
-          <label className="font-medium">Gender</label>
-          <select name="gender" className="border px-4 py-2 rounded-md">
+        {/* Email */}
+        <div>
+          <label className="block mb-1 font-medium text-gray-700">Email</label>
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter your email"
+            className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+        </div>
+
+        {/* Gender */}
+        <div>
+          <label className="block mb-1 font-medium text-gray-700">Gender</label>
+          <select
+            name="gender"
+            className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+          >
             <option value="">Select Gender</option>
             <option>Male</option>
             <option>Female</option>
           </select>
+        </div>
 
-          <label className="font-medium">Age</label>
-          <input type="number" name="age" className="border px-4 py-2 rounded-md" />
+        {/* Phone Number */}
+        <div>
+          <label className="block mb-1 font-medium text-gray-700">Phone Number</label>
+          <input
+            type="tel"
+            name="phone"
+            placeholder="Enter your phone number"
+            className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+        </div>
 
-          <label className="font-medium">Test Type</label>
-          <select name="testType" className="border px-4 py-2 rounded-md">
+        {/* Age */}
+        <div>
+          <label className="block mb-1 font-medium text-gray-700">Age</label>
+          <input
+            type="number"
+            name="age"
+            placeholder="Enter your age"
+            className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+        </div>
+
+        {/* Test Type */}
+        <div>
+          <label className="block mb-1 font-medium text-gray-700">Test Type</label>
+          <select
+            name="testType"
+            className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+          >
             <option value="">Select Test Type</option>
             <option>Blood Test</option>
             <option>Urine Test</option>
             <option>COVID-19 PCR</option>
           </select>
         </div>
-
-        {/* Right Column */}
-        <div className="flex flex-col space-y-2">
-          <label className="font-medium">Email</label>
-          <input type="email" name="email" className="border px-4 py-2 rounded-md" />
-
-          <label className="font-medium">Phone Number</label>
-          <input type="tel" name="phone" className="border px-4 py-2 rounded-md" />
-        </div>
-
-        {/* Navigate Button */}
+        {/* Button - full width across both columns */}
         <div className="md:col-span-2 flex justify-center mt-6">
           <button
             type="button"
-            className="w-[50%] bg-[#2f4fdb] text-white py-3 rounded-md hover:bg-[#1d1ae5] transition duration-300"
+            className="w-full md:w-1/2 bg-[#2f4fdb] text-white py-3 rounded-md hover:bg-[#1d1ae5] transition duration-300 font-semibold"
             onClick={() => navigate("/select-date")}
           >
             Select Appointment Date & Time
           </button>
         </div>
-      </div>
+      </form>
     </div>
   );
 };
