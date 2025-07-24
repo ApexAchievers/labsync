@@ -67,19 +67,31 @@
 
 import React from "react";
 import { Outlet } from "react-router-dom";
-import SideBar from "../components/SideBar"; // adjust path if needed
+import SideBar from "../components/SideBar";
+import Header from "../components/Header";
 
 const PatientDashboard = () => {
   return (
-    <div className="flex min-h-screen bg-gray-100">
-      <SideBar />
+    <div className="flex h-screen overflow-hidden bg-gray-100">
+      {/* Sidebar */}
+      <aside className="w-64 bg-white border-r border-gray-200 shadow-sm">
+        <SideBar />
+      </aside>
 
-      <main className="flex-1 p-6 bg-gray-50">
-        <Outlet /> {/* This renders the nested route content */}
-      </main>
+      {/* Main Content Area */}
+      <div className="flex flex-col flex-1 overflow-y-auto">
+        {/* Header */}
+        <header className="bg-white border-b border-gray-200 shadow-sm px-6 py-2">
+          <Header title="Patient Dashboard" />
+        </header>
+
+        {/* Page Content */}
+        <main className="flex-1 p-6 bg-gray-50 overflow-y-auto">
+          <Outlet />
+        </main>
+      </div>
     </div>
   );
 };
 
 export default PatientDashboard;
-
