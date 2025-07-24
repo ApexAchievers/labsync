@@ -18,6 +18,8 @@ import SelectDate from "./pages/SelectDate";
 import EditProfileTech from "./pages/EditProfileTech";
 import ProfileTech from "./pages/ProfileTech";
 import { ToastContainer } from "react-toastify";
+import TechPage from "./pages/TechPage";
+import TechPassword from "./pages/TechPassword";
 
 
 function App() {
@@ -40,7 +42,9 @@ function App() {
     { path: "*", element: <NotFound /> },
     { path: "/otp", element: <OTP /> },
     { path: "/edit-profile-tech", element: <EditProfileTech /> },
-    { path: "/profile-tech", element: <Profile /> },
+    { path: "/profile-tech", element: <ProfileTech /> },
+    { path: "/tech-page", element: <TechPage /> },
+    { path: "/tech-password", element: <TechPassword /> },
   ]);
 
   return (
