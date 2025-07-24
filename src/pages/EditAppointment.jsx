@@ -1,7 +1,7 @@
-import { Pencil } from "lucide-react";
+import { Pencil, Trash } from "lucide-react";
 import { Link } from "react-router-dom";
 
-export default function ViewAppointment() {
+export default function EditAppointment() {
   return (
     <div className="w-full max-w-5xl mx-auto py-6">
       <h1 className="text-2xl font-bold text-gray-800 mb-6 text-center">
@@ -63,7 +63,7 @@ export default function ViewAppointment() {
               Appointment Date
             </label>
             <input
-              type=""
+              type="date"
               name="date"
               className="w-full border border-gray-300 px-4 py-2 rounded-md focus:ring-2 focus:ring-blue-500 outline-none"
             />
@@ -85,7 +85,7 @@ export default function ViewAppointment() {
               Email
             </label>
             <input
-              type=""
+              type="email"
               name="email"
               className="w-full border border-gray-300 px-4 py-2 rounded-md focus:ring-2 focus:ring-blue-500 outline-none"
             />
@@ -103,16 +103,23 @@ export default function ViewAppointment() {
           </div>
         </div>
 
-        {/* Submit Button */}
-        <div className="md:col-span-2 flex justify-center mt-4">
-          <Link
-          to={"/patient-dashboard/edit-appointment"}
+        {/* Action Buttons */}
+        <div className="md:col-span-2 flex flex-col md:flex-row justify-center items-center gap-4 mt-6">
+          <button
             type="submit"
-            className="w-full md:w-1/3 flex items-center justify-center gap-2 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-300"
+            className="w-full md:w-auto flex items-center justify-center gap-2 bg-blue-600 text-white py-2 px-6 rounded-md hover:bg-blue-700 transition"
           >
             <span>Edit Appointment</span>
             <Pencil className="w-4 h-4" />
-          </Link>
+          </button>
+
+          <button
+            type="button"
+            className="w-full md:w-auto flex items-center justify-center gap-2 bg-red-100 text-red-600 py-2 px-6 rounded-md hover:bg-red-200 transition"
+          >
+            <span>Delete Appointment</span>
+            <Trash className="w-4 h-4" />
+          </button>
         </div>
       </form>
     </div>
