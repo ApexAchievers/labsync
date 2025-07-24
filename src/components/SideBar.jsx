@@ -37,8 +37,9 @@ const SideBar = () => {
       <div className="flex flex-row space-x-4 mb-6">
         <FlaskConical className="h-10 w-6 text-[#2f4fdb]" />
         <h2>
-          <span className="text-2xl font-bold">LabSync</span> <br />
-          <span className="">Patient Dashboard</span>
+          <span className="text-3xl font-bold ">LabSync</span> 
+          {/* <br />
+          <span className="">Patient Dashboard</span> */}
         </h2>
       </div>
 
