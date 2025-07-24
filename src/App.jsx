@@ -19,7 +19,6 @@ import EditProfileTech from "./pages/EditProfileTech";
 import ProfileTech from "./pages/ProfileTech";
 import { ToastContainer } from "react-toastify";
 import TechPage from "./pages/TechPage";
-import TechPassword from "./pages/TechPassword";
 import DashboardHome from "./pages/DashboardHome";
 import EditAppointment from "./pages/EditAppointment";
 
@@ -68,7 +67,7 @@ function App() {
     { path: "/edit-profile-tech", element: <EditProfileTech /> },
     { path: "/profile-tech", element: <ProfileTech /> },
     { path: "/tech-page", element: <TechPage /> },
-    { path: "/tech-password", element: <TechPassword /> },
+   
   ]);
 
   return (
