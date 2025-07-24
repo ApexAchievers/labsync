@@ -17,13 +17,13 @@ export default function SignUp() {
         acceptTerms: false,
     });
 
-    const handleChange = (e) => {
-        const { fullName, value, type, checked } = e.target;
-        setFormData({
-            ...formData,
-            [fullName]: type === "checkbox" ? checked : value,
-        });
-    };
+  const handleChange = (e) => {
+    const { fullName, value, type, checked } = e.target;
+    setFormData({
+      ...formData,
+      [fullName]: type === "checkbox" ? checked : value,
+    });
+  };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -38,39 +38,39 @@ export default function SignUp() {
             return;
         }
 
-        try {
-            const response = await apiClient.post("/api/auth/register", {
-                fullName: formData.fullName,
-                email: formData.email,
-                password: formData.password,
-                confirmPassword: formData.confirmPassword,
-                acceptedTerms: formData.acceptTerms,
-            });
-            localStorage.setItem("email", response.data.email);
-            const result = await response.json();
+    try {
+      const response = await apiClient.post("/api/auth/register", {
+        fullName: formData.fullName,
+        email: formData.email,
+        password: formData.password,
+        confirmPassword: formData.confirmPassword,
+        acceptedTerms: formData.acceptTerms,
+      });
+      localStorage.setItem("email", response.data.email);
+      const result = await response.json();
 
-            if (response.ok) {
-                toast.success("Signup successful!");
-                console.log(result);
-                // Optionally reset the form
-                setFormData({
-                    fullName: "",
-                    email: "",
-                    password: "",
-                    confirmPassword: "",
-                    acceptTerms: false,
-                });
-            } else {
-                toast.error(result.message || "Signup failed!");
-            }
+      if (response.ok) {
+        toast.success("Signup successful!");
+        console.log(result);
+        // Optionally reset the form
+        setFormData({
+          fullName: "",
+          email: "",
+          password: "",
+          confirmPassword: "",
+          acceptTerms: false,
+        });
+      } else {
+        toast.error(result.message || "Signup failed!");
+      }
 
-            navigate("/otp");
-
-        } catch (error) {
-            console.error("Error submitting form:", error);
-            toast.error("An error occurred. Please try again later.");
-        }
-    };
+      navigate("/otp");
+      
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast.error("An error occurred. Please try again later.");
+    }
+  };
 
     const isFormValid =
         formData.fullName &&

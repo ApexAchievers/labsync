@@ -1,4 +1,21 @@
+import { apiClient } from "../api/client";
+import { useNavigate } from "react-router";
+
 export default function OTP() {
+  const navigate = useNavigate();
+  const verifyOTP = async (data) => {
+    try {
+      const response = await apiClient.post("/api/auth/verify-otp", data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      navigate("/login");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded shadow-md w-full max-w-sm">
@@ -6,7 +23,7 @@ export default function OTP() {
           Verify OTP
         </h2>
 
-        <form className="space-y-4">
+        <form action={verifyOTP} className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Enter Email
