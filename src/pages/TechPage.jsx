@@ -1,8 +1,13 @@
 import React from "react";
 import { Link } from "react-router";
+import { useParams } from 'react-router-dom';
+
 
 
 export default function TechPage() {
+    const { id }= useParams();
+    console.log("Tech ID:", id);
+
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100">
             <div className="w-full max-w-md bg-white p-6 rounded-lg shadow-md">

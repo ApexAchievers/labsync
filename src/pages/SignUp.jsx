@@ -89,9 +89,9 @@ export default function SignUp() {
         formData.acceptTerms;
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
-            <div className="flex w-full max-w-5xl shadow-lg rounded-lg overflow-hidden bg-white">
-                {/* image legt side */}
+        <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4 py-8">
+            <div className="flex w-full max-w-4xl shadow-lg rounded-lg overflow-hidden bg-white">
+                {/* image left side */}
                 <div className="w-1/2 hidden md:block">
                     <img src={Signuppic} alt="Sign up" className="w-full h-full object-cover" />
                 </div>

@@ -66,7 +66,7 @@ function App() {
     { path: "/otp", element: <OTP /> },
     { path: "/edit-profile-tech", element: <EditProfileTech /> },
     { path: "/profile-tech", element: <ProfileTech /> },
-    { path: "/tech-page", element: <TechPage /> },
+    { path: "/tech-page/:id", element: <TechPage /> },
    
   ]);
 
