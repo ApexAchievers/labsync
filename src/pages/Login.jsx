@@ -55,9 +55,9 @@ export default function LoginPage() {
             if (role === "user") {
                 navigate("/patient-dashboard");
             } else if (role === "admin") {
-                navigate("/admin-dashboard");
+                navigate("/manager-dashboard");
             } else if (role === "lab") {
-                navigate("/lab-dashboard");
+                navigate("/technician-dashboard");
             } else {
                 toast.error("Unknown role. Access denied.");
                 navigate("/not-authorized");

@@ -85,7 +85,7 @@ export default function SignUp() {
             <div className="w-full max-w-md bg-white p-6 rounded-lg shadow">
                 {/* Logo & Title */}
                 <div className="flex flex-col items-center mb-6">
-                    <div className="bg-green-500 w-10 h-10 flex items-center justify-center rounded-full mb-2">
+                    <div className="bg-blue-600 w-10 h-10 flex items-center justify-center rounded-full mb-2">
                         <span className="text-white text-xl font-bold">
                             {" "}
                             <FlaskConical />{" "}
@@ -115,7 +115,7 @@ export default function SignUp() {
                             value={formData.fullName}
                             onChange={handleChange}
                             placeholder="Enter your full name"
-                            className="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                            className="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600"
                             required
                         />
                     </div>
@@ -131,7 +131,7 @@ export default function SignUp() {
                             value={formData.email}
                             onChange={handleChange}
                             placeholder="Enter your email"
-                            className="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                            className="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600"
                             required
                         />
                     </div>
@@ -150,7 +150,7 @@ export default function SignUp() {
                             value={formData.password}
                             onChange={handleChange}
                             placeholder="Create a password"
-                            className="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                            className="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600"
                             required
                         />
                     </div>
@@ -169,7 +169,7 @@ export default function SignUp() {
                             value={formData.confirmPassword}
                             onChange={handleChange}
                             placeholder="Confirm your password"
-                            className="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                            className="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600"
                             required
                         />
                     </div>
@@ -186,8 +186,8 @@ export default function SignUp() {
                         />
                         <label htmlFor="acceptTerms">
                             I agree to the{" "}
-                            <span className="text-green-600">Terms of Service</span> and{" "}
-                            <span className="text-green-600">Privacy Policy</span>
+                            <span className="text-blue-600">Terms of Service</span> and{" "}
+                            <span className="text-blue-600">Privacy Policy</span>
                         </label>
                     </div>
 
@@ -196,7 +196,7 @@ export default function SignUp() {
                         disabled={!isFormValid}
                         className={`w-full py-2 rounded text-sm font-medium transition 
         ${isFormValid
-                                ? "bg-green-500 hover:bg-green-600 text-white"
+                                ? "bg-blue-500 hover:bg-blue-600 text-white"
                                 : "bg-gray-300 text-gray-600 cursor-not-allowed"
                             }`}
                     >
@@ -204,12 +204,12 @@ export default function SignUp() {
                     </button>
                     <p className="text-center text-sm text-gray-500">
                         Already have an account?{" "}
-                        <span className="text-green-600 font-medium cursor-pointer">
+                        <span className="text-blue-600 font-medium cursor-pointer">
                             Log in
                         </span>
                     </p>
                     <div
-                        className="flex items-center justify-center gap-2 text-green-600 cursor-pointer"
+                        className="flex items-center justify-center gap-2 text-blue-600 cursor-pointer"
                         onClick={() => console.log('Sign in with Google')}
                     >
                         <img src={Google} alt="Google" className="w-5 h-5" />
