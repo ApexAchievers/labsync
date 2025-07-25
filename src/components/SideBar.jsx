@@ -50,9 +50,9 @@ const SideBar = () => {
           <span>Dashboard</span>
         </Link>
 
-        <Link to={"/patient-dashboard/view-appointment"} className="flex items-center space-x-2 text-gray-700 hover:text-blue-600 cursor-pointer">
+        <Link to={"/patient-dashboard/appointments"} className="flex items-center space-x-2 text-gray-700 hover:text-blue-600 cursor-pointer">
           <CalendarDays className="w-5 h-5" />
-          <span>Veiw Appointment</span>
+          <span>Appointment</span>
         </Link>
 
 
