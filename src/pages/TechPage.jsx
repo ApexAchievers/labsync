@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router";
 import { useParams } from 'react-router-dom';
 import { apiClient } from "../api/client";
@@ -9,9 +9,13 @@ import axios from "axios";
 
 
 
+
 export default function TechPage() {
     const { id }= useParams();
     console.log("Tech ID:", id);
+
+    const [setPassword, setSetPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
 
     
         const acceptInvite = async (data) => {
@@ -44,6 +48,9 @@ export default function TechPage() {
                     <div>
                         <label className="block text-sm font-medium text-gray-600">New Password</label>
                         <input
+                            value={setPassword}
+                            onChange={(e) => setSetPassword(e.target.value)}
+                            name="setPassword"
                             type="password"
                             className="w-full border rounded px-3 py-2 mt-1 text-sm"
                             placeholder="********"
@@ -52,6 +59,9 @@ export default function TechPage() {
                     <div>
                         <label className="block text-sm font-medium text-gray-600">Confirm Password</label>
                         <input
+                            value={confirmPassword}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                            name="confirmPassword"
                             type="password"
                             className="w-full border rounded px-3 py-2 mt-1 text-sm"
                             placeholder="********"
