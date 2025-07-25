@@ -61,9 +61,6 @@ function App() {
           element: <Appointments />, // this is for booked appointments
         },
 
-        {
-          
-        }
         // Add more nested routes if needed
       ],
     },

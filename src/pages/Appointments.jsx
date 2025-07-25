@@ -1,6 +1,11 @@
 import React from "react";
 
+
 const Appointment = () => {
+
+  // Placeholder for appointment data
+
+  
   return (
     <div className="bg-white shadow-md rounded-lg p-6">
       <h2 className="text-2xl font-semibold mb-4">Appointments</h2>
