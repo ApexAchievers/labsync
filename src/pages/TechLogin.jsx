@@ -8,13 +8,13 @@ import { toast } from "react-toastify";
 
 
 
-export default function LoginPage() {
+export default function TechLogin() {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const login = async (data) => {
-        const loginPromise = apiClient.post("/api/auth/login", data, {
+        const loginPromise = apiClient.post("/api/technician/login", data, {
             headers: {
                 "Content-Type": "application/json",
             },
@@ -47,21 +47,12 @@ export default function LoginPage() {
         try {
             const response = await loginPromise;
 
-            const { token, user } = response.data;
-            const { role } = user;
+            const { token, technician } = response.data;
+            console.log("Technician data:", technician);
+            navigate("/technician-dashboard");
 
             localStorage.setItem("token", token);
 
-            if (role === "user") {
-                navigate("/patient-dashboard");
-            } else if (role === "admin") {
-                navigate("/manager-dashboard");
-            } else if (role === "technician") {
-                navigate("/technician-dashboard");
-            } else {
-                toast.error("Unknown role. Access denied.");
-                navigate("/not-authorized");
-            }
         } catch (error) {
             console.error("Login error:", error);
         }

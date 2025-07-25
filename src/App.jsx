@@ -22,6 +22,7 @@ import TechPage from "./pages/TechPage";
 import DashboardHome from "./pages/DashboardHome";
 import EditAppointment from "./pages/EditAppointment";
 import SupportPage from "./pages/SupportPage";
+import TechLogin from "./pages/TechLogin";
 
 
 function App() {
@@ -70,6 +71,7 @@ function App() {
     { path: "/profile-tech", element: <ProfileTech /> },
     { path: "/tech-page/:id", element: <TechPage /> },
     { path: "/support-page", element: <SupportPage /> },
+    { path: "/technician-login", element: <TechLogin /> },
    
   ]);
 
