@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { apiClient } from '../api/client';
-import { UserPlus, Edit, Trash2 } from 'lucide-react';
+import { UserPlus, Edit, Trash2 } from 'lucide-react'
+import { toast } from 'react-toastify';
+
 
 export default function StaffManagement() {
     const [staffList, setStaffList] = useState([]);
@@ -11,7 +13,7 @@ export default function StaffManagement() {
 
     // Hardcoded specialties
     const specialtyOptions = [
-       'Full Blood Count', 'Blood Sugar,Blood Film for Malaria Parasites', 'Sickle Cell, HB Electrophoresis (Genotype)', 'Erythrocyte Sedimentation Rate (ESR)', 'Blood Grouping', 'Typhidot', 'H. Pylori', 'VDRL for Syphillis', 'Hepatitis B', 'Hepatitis C', 'Retro Screenfor HIV', 'Urine R/E', 'Stool R/E', 'Covid 19', 'Liver Function Test (LFT)','Kidney Function Test (KFT)', 'BUE & Cr(Gene Xpert)', 'Hormonal/Fertility Tests'
+        'Full Blood Count', 'Blood Sugar,Blood Film for Malaria Parasites', 'Sickle Cell, HB Electrophoresis (Genotype)', 'Erythrocyte Sedimentation Rate (ESR)', 'Blood Grouping', 'Typhidot', 'H. Pylori', 'VDRL for Syphillis', 'Hepatitis B', 'Hepatitis C', 'Retro Screenfor HIV', 'Urine R/E', 'Stool R/E', 'Covid 19', 'Liver Function Test (LFT)', 'Kidney Function Test (KFT)', 'BUE & Cr(Gene Xpert)', 'Hormonal/Fertility Tests'
     ];
 
     const handleAddStaff = () => {
@@ -36,22 +38,22 @@ export default function StaffManagement() {
     const inviteTechnician = async () => {
         if (newStaff.fullName && newStaff.email && newStaff.specialties) {
             try {
-                // if (editId !== null) {
-                //     // PUT request for update (optional)
-                // } else {
-                    console.log('Inviting new staff:', newStaff);
-                    console.log
-                    const response = await apiClient.post('/api/technician/invite', newStaff); // replace with real URL
-                    setStaffList([...staffList, response.data]);
-                // }
+                const response = await apiClient.post('/api/technician/invite', newStaff);
+                setStaffList([...staffList, response.data]);
+
+                toast.success('Technician invited successfully!');
                 setNewStaff({ name: '', email: '', specialties: '' });
                 setEditId(null);
                 setActiveTab('list');
             } catch (error) {
+                toast.error(error?.response?.data?.message || 'Failed to invite technician');
                 console.error('Error saving staff:', error);
             }
+        } else {
+            toast.warning('Please fill in all fields');
         }
     };
+
 
     const handleDeleteStaff = async (id) => {
         if (confirm('Are you sure you want to delete this staff member?')) {
