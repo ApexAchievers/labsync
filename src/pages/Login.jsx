@@ -96,7 +96,7 @@ export default function LoginPage() {
                         e.preventDefault();
                         if (email && password) login({ email, password });
                     }}
-                    className="space-y-4  p-8 rounded-xl  w-full max-w-md" style={{ boxShadow: "0 10px 40px rgba(255, 0, 0, 0.8", }}
+                    className="space-y-4  p-8 rounded-xl  w-full max-w-md" style={{ boxShadow: "0 5px 20px rgba(150, 0, 0, 0.5", }}
                 >
 
 
