@@ -3,6 +3,7 @@ import Sidebar from "../components/SideBarTech";
 import Navbar from "../components/Navbar";
 import { Link } from "react-router";
 import { Clock, Loader, CheckCircle, CircleHelp, ListTodo, Pencil, } from "lucide-react";
+import Labtech from "../assets/images/labtechnician.jpg"
 
 
 
@@ -10,9 +11,11 @@ import { Clock, Loader, CheckCircle, CircleHelp, ListTodo, Pencil, } from "lucid
 export default function TechnicianDashboard() {
   return (
     <>
-    <div className="flex min-h-screen bg-gray-100">
+    <div className="min-h-screen flex items-center justify-center  px-4" style={{
+               backgroundImage: `linear-gradient(to bottom right, rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url(${Labtech})`
+           }} >
     <Sidebar/> 
-      <main className="flex-1 p-6 bg-gray-50 min-h-screen">
+      <main className="flex-1 p-6  min-h-screen">
       {/* Welcome & Stats */}
       <div className="mb-6">
         <h1 className="text-2xl font-bold text-gray-800">Technician Dashboard</h1>

@@ -21,7 +21,7 @@ export default function Sidebar() {
     return (
         <div className="w-64 h-screen bg-white shadow-lg p-4 flex flex-col">
             <div className="flex flex-row space-x-4 mb-6">
-                <FlaskConical className="h-6 w-6 text-[#4CAF50]" />
+                <FlaskConical className="h-6 w-6 text-blue-600" />
                 <div className="text-2xl font-bold">LabSync</div>
             </div>
             <div className="flex flex-col flex-grow">
