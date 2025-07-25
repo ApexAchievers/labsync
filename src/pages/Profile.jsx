@@ -1,8 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Pencil } from "lucide-react";
 import { Link } from "react-router";
+import { useState } from "react";
+import { apiClient } from "../api/client";
+import { toast } from "react-toastify";
 
 export default function Profile() {
+
+  const [profileData, setProfileData] = useState('');
+
+  useEffect(() => {
+    const fetchProfileData = async () => {
+      try {
+        const response = await apiClient.get("/api/auth/profile", {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+        setProfileData(response.data);
+        console.log("Profile data:", response.data);
+      } catch (error) {
+        console.error("Error fetching profile data:", error);
+        toast.error("Failed to load profile data.");
+      }
+    }
+    fetchProfileData();
+  }, []);
+
   return (
     <div className="min-h-screen bg-gray-100 py-10 px-4">
       <div className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-md">

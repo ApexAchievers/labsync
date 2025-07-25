@@ -5,17 +5,16 @@ import { useNavigate } from "react-router";
 import { Link } from "react-router";
 import { apiClient } from "../api/client";
 import { toast } from "react-toastify";
-import labside from "../assets/images/labinside.jpg";
 
 
 
-export default function LoginPage() {
+export default function TechLogin() {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const login = async (data) => {
-        const loginPromise = apiClient.post("/api/auth/login", data, {
+        const loginPromise = apiClient.post("/api/technician/login", data, {
             headers: {
                 "Content-Type": "application/json",
             },
@@ -48,30 +47,19 @@ export default function LoginPage() {
         try {
             const response = await loginPromise;
 
-            const { token, user } = response.data;
-            const { role } = user;
+            const { token, technician } = response.data;
+            console.log("Technician data:", technician);
+            navigate("/technician-dashboard");
 
             localStorage.setItem("token", token);
 
-            if (role === "user") {
-                navigate("/patient-dashboard");
-            } else if (role === "admin") {
-                navigate("/manager-dashboard");
-            } else if (role === "technician") {
-                navigate("/technician-dashboard");
-            } else {
-                toast.error("Unknown role. Access denied.");
-                navigate("/not-authorized");
-            }
         } catch (error) {
             console.error("Login error:", error);
         }
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center  px-4" style={{
-            backgroundImage: `linear-gradient(to bottom right, rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url(${labside})`
-        }} >
+        <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
             <div className="w-full max-w-md bg-white rounded-lg shadow-md p-6 space-y-6">
                 {/* Logo */}
                 <div className="flex justify-center">
@@ -96,10 +84,8 @@ export default function LoginPage() {
                         e.preventDefault();
                         if (email && password) login({ email, password });
                     }}
-                    className="space-y-4  p-8 rounded-xl  w-full max-w-md" style={{ boxShadow: "0 10px 40px rgba(255, 0, 0, 0.8", }}
+                    className="space-y-4"
                 >
-
-
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">
                             Email Address
@@ -110,7 +96,7 @@ export default function LoginPage() {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             placeholder="Enter your email"
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 text-sm"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 text-sm"
                         />
                     </div>
 
@@ -124,10 +110,10 @@ export default function LoginPage() {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             placeholder="Enter your password"
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 text-sm"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 text-sm"
                         />
                         <div className="text-right mt-1">
-                            <a href="#" className="text-sm text-blue-600 hover:underline">
+                            <a href="#" className="text-sm text-green-500 hover:underline">
                                 Forgot Password?
                             </a>
                         </div>
@@ -137,7 +123,7 @@ export default function LoginPage() {
                         type="submit"
                         disabled={!email || !password}
                         className={`w-full py-2 px-4 rounded-md text-sm font-medium transition duration-200 ${email && password
-                            ? "bg-blue-600 text-white hover:bg-blue-500"
+                            ? "bg-green-500 text-white hover:bg-green-600"
                             : "bg-gray-300 text-gray-500 cursor-not-allowed"
                             }`}
                     >
@@ -149,7 +135,7 @@ export default function LoginPage() {
                 <p className="text-center text-sm text-gray-500">
                     Don’t have an account?{" "}
                     <Link to="/sign-up">
-                        <div className="text-blue-600 hover:underline font-medium">
+                        <div className="text-green-500 hover:underline font-medium">
                             Sign up
                         </div>
                     </Link>
@@ -164,7 +150,7 @@ export default function LoginPage() {
 
                 {/* Google Sign In */}
                 <div
-                    className="flex items-center justify-center gap-2 text-blue-600 cursor-pointer"
+                    className="flex items-center justify-center gap-2 text-green-600 cursor-pointer"
                     onClick={() => console.log('Sign up with Google')}
                 >
                     <img src={Google} alt="Google" className="w-5 h-5" />
