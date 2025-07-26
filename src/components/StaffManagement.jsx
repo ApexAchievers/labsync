@@ -69,17 +69,17 @@ export default function StaffManagement() {
     return (
         <div className="space-y-6 p-6 bg-gray-50 min-h-screen">
             <div className="flex justify-between items-center">
-                <h2 className="text-3xl font-bold text-gray-800">Staff Management</h2>
+                <h2 className="text-2xl text-gray-500"> Technician Management</h2>
                 <div className="flex space-x-2">
                     <button
                         onClick={() => setActiveTab('list')}
-                        className={`px-4 py-2 rounded-lg ${activeTab === 'list' ? 'bg-blue-600 text-white' : 'bg-white text-gray-700 hover:bg-gray-100'}`}
+                        className={`px-4 py-2 rounded-lg ${activeTab === 'list' ? 'bg-blue-500 text-white' : 'bg-gray-300 text-gray-700 hover:bg-gray-100'}`}
                     >
-                        Staff List
+                        Technicians List
                     </button>
                     <button
                         onClick={handleAddStaff}
-                        className={`px-4 py-2 rounded-lg ${activeTab === 'add' ? 'bg-blue-600 text-white' : 'bg-white text-gray-700 hover:bg-gray-100'}`}
+                        className={`px-4 py-2 rounded-lg ${activeTab === 'add' ? 'bg-blue-500 text-white' : 'bg-gray-300 text-gray-700 hover:bg-gray-100'}`}
                     >
                         <UserPlus className="inline-block w-4 h-4 mr-2" />
                         Add Technician
@@ -88,63 +88,76 @@ export default function StaffManagement() {
             </div>
 
             {activeTab === 'add' && (
-                <div className="bg-white rounded-xl shadow-md p-6">
-                    <h3 className="text-xl font-semibold mb-4 text-gray-800">
-                        {editId !== null ? 'Edit Staff Member' : 'Add New Staff Member'}
+                <div className="bg-white rounded-xl shadow-2xl p-8 max-w-lg mx-auto animate-fade-in-up">
+                    <h3 className="text-xl font-bold mb-6 text-blue-500 text-center">
+                        {editId !== null ? 'Edit Staff Member' : 'Add Technician'}
                     </h3>
-                    <div className="space-y-6">
+                    <form className="space-y-6">
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                            <label className="text-sm text-gray-600">Full Name</label>
                             <input
                                 type="text"
                                 value={newStaff.fullName}
                                 onChange={(e) => setNewStaff({ ...newStaff, fullName: e.target.value })}
-                                className="w-full px-3 py-2 border rounded-md focus:ring-blue-500"
+                                className="w-full px-4 py-3 border border-blue-200 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition shadow-sm bg-blue-50 placeholder-gray-400"
+                                placeholder="Enter full name"
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <label className="text-sm text-gray-600 ">Email</label>
                             <input
                                 type="email"
                                 value={newStaff.email}
                                 onChange={(e) => setNewStaff({ ...newStaff, email: e.target.value })}
-                                className="w-full px-3 py-2 border rounded-md focus:ring-blue-500"
+                                className="w-full px-4 py-3 border border-blue-200 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-300 transition shadow-sm bg-blue-50 placeholder-gray-400"
+                                placeholder="Enter email address"
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Specialties</label>
+                            <label  className="text-sm text-gray-500 ">Specialties</label>
                             <select
                                 value={newStaff.specialties}
                                 onChange={(e) => setNewStaff({ ...newStaff, specialties: e.target.value })}
-                                className="w-full px-3 py-2 border rounded-md focus:ring-blue-500"
+                                className="w-full px-4 py-3 border border-blue-200 rounded-md  focus:border-blue-400 transition shadow-sm"
                             >
-                                <option value="">Select a specialty</option>
+                                <option className="text-gray-500"disabled value="">Select a specialty</option>
                                 {specialtyOptions.map((specialty, idx) => (
-                                    <option key={idx} value={specialty}>
+                                    <option className='text-gray-500' key={idx} value={specialty}>
                                         {specialty}
                                     </option>
                                 ))}
                             </select>
                         </div>
-                        <div className="flex gap-3">
+                        <div className="flex gap-4 justify-end pt-2">
                             <button
+                                type="button"
                                 onClick={inviteTechnician}
-                                className="px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
+                                className="px-4 bg-blue-500 text-white rounded-md shadow hover:bg-gray-300 transition-all duration-200"
                             >
                                 {editId !== null ? 'Update Staff' : 'Add Staff'}
                             </button>
                             <button
+                                type="button"
                                 onClick={() => {
                                     setActiveTab('list');
                                     setEditId(null);
                                     setNewStaff({ fullName: '', email: '', specialties: '' });
                                 }}
-                                className="px-6 py-2 bg-gray-300 text-gray-800 rounded-md hover:bg-gray-400"
+                                className="px-6 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 transition-all duration-200"
                             >
                                 Cancel
                             </button>
                         </div>
-                    </div>
+                    </form>
+                    <style>{`
+                        @keyframes fade-in-up {
+                          0% { opacity: 0; transform: translateY(40px); }
+                          100% { opacity: 1; transform: translateY(0); }
+                        }
+                        .animate-fade-in-up {
+                          animation: fade-in-up 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+                        }
+                    `}</style>
                 </div>
             )}
 

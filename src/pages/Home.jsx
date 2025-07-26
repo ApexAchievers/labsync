@@ -140,13 +140,13 @@ export default function Home() {
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center justify-center lg:justify-start">
                 <Link to="/sign-up">
-                  <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-sm sm:text-base transition duration-300 bg-blue-600 text-white hover:bg-transparent hover:text-red-700 hover:border-2 hover:border-red-700 min-w-[160px] cursor-pointer">
+                  <button className="w-full py-2 px-4 rounded-md text-sm font-medium transition duration-200 bg-blue-600 text-white hover:bg-blue-500 cursor-not-allowed">
                     Get Started
                   </button>
                 </Link>
 
                 <Link>
-                  <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-sm sm:text-base transition duration-300 bg-transparent text-red-700 border-2 border-red-700 hover:bg-blue-800 hover:text-white hover:border-0 min-w-[160px] cursor-pointer">
+                  <button className="w-full py-2 px-4 rounded-md text-sm font-medium transition duration-200 outline-red-500 text-[red] hover:bg-blue-500 bg-gray-300 cursor-pointer">
                     Watch Demo
                   </button>
                 </Link>

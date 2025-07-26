@@ -23,6 +23,7 @@ import DashboardHome from "./pages/DashboardHome";
 import EditAppointment from "./pages/EditAppointment";
 import SupportPage from "./pages/SupportPage";
 import TechLogin from "./pages/TechLogin";
+import Appointments from "./pages/Appointments";
 
 
 function App() {
@@ -53,7 +54,13 @@ function App() {
         {
           path: "edit-appointment",
           element:  <EditAppointment />,
-        }
+        },
+
+        {
+          path: "appointments",
+          element: <Appointments />, // this is for booked appointments
+        },
+
         // Add more nested routes if needed
       ],
     },
