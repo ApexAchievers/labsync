@@ -1,14 +1,13 @@
 import React from 'react';
-import { ChartLine, Users, Package, CalendarDays, TestTube, ChartBar, LogOutIcon, Settings, FlaskConical, UserPen, Bell } from 'lucide-react';
+import {Users, Package, CalendarDays, TestTube, ChartBar, LogOutIcon, Settings, FlaskConical, User, LayoutDashboard, UserPen, Bell } from 'lucide-react';
 import { useState } from 'react'; // ← Add useState here
 
 
 const menuItems = [
-  { id: 'dashboard', label: 'Dashboard', icon: ChartLine },
+  { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { id: 'staff', label: 'Technicians', icon: Users },
   { id: 'tests', label: 'Appointments', icon: CalendarDays },
-  { id: 'user', label: 'Patients', icon: Users },
-  { id: 'Logout', label: 'logout', icon: LogOutIcon },
+  { id: 'user', label: 'Patients', icon: User },
 ];
 
 export default function Sidebar({ activeMenu, setActiveMenu }) {
@@ -24,18 +23,23 @@ export default function Sidebar({ activeMenu, setActiveMenu }) {
           <span className="text-xl font-semibold text-gray-800">LabSync</span>
         </div>
         <nav className="space-y-2">
-          {menuItems.map(({ id, label, icon: Icon }) => (
+          {menuItems.map((item) => (
             <button
-              key={id}
-              onClick={() => setActiveMenu(id)}
-              className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors duration-200 ${activeMenu === id
-                ? 'text-white bg-[#3b82f6] shadow-sm'
+              key={item.id}
+              onClick={() => setActiveMenu(item.id)}
+              className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors duration-200 ${activeMenu === item.id
+                ? 'text-white bg-[#3b82f6]'
                 : 'text-gray-600 hover:bg-gray-100 hover:text-gray-800'
                 }`}
             >
-              <Icon className="w-5 h-5" />
-              <span className="font-medium">{label}</span>
+              <item.icon className="w-5 h-5" />
+              <span className="font-medium">{item.label}</span>
             </button>
+          ))}
+          {menuItems.map(({ id }) => (
+            id === 'user' && activeMenu === 'Patients' && (
+              <PatientList />
+            )
           ))}
 
           {/* Settings Menu */}
@@ -80,6 +84,19 @@ export default function Sidebar({ activeMenu, setActiveMenu }) {
             )}
 
           </div>
+
+          {/* Logout Menu */}
+          <button
+            key={'Logout'}
+            onClick={() => setActiveMenu('Logout')}
+            className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors duration-200 ${activeMenu === 'Logout'
+              ? 'text-white bg-[#3b82f6] shadow-sm'
+              : 'text-gray-600 hover:bg-gray-100 hover:text-gray-800'
+              }`}
+          >
+            <LogOutIcon className="w-5 h-5" />
+            <span className="font-medium">logout</span>
+          </button>
         </nav>
 
       </div>

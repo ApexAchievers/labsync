@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Pencil, Trash2, Loader2, X } from 'lucide-react';
 // import { toast, ToastContainer } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
@@ -233,7 +233,7 @@ export default function TestManagement() {
                                 Cancel
                             </button>
                             <button
-                                className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700"
                                 onClick={handleSave}
                             >
                                 Save Changes

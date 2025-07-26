@@ -22,7 +22,7 @@ export default function Header({ activeMenu }) {
     staff: 'Staff Management',
     tests: 'Test Management',
     inventory: 'Inventory Tracking',
-    // analytics: 'Analytics & Reports',
+    user: 'Patients',
     settings: 'Settings & Preferences',
   };
 
@@ -52,8 +52,8 @@ export default function Header({ activeMenu }) {
   };
 
   return (
-    <header className="flex items-center justify-between px-6 py-4 bg-white relative">
-      <h1 className="text-xl font-semibold text-gray-800">{titleMap[activeMenu]}</h1>
+    <header className="flex items-center justify-between px-6 py-4 bg-white relative font-poppins">
+      <h1 className="text-xl font-semibold text-gray-800 font-poppins">{titleMap[activeMenu]}</h1>
       <div className="flex items-center space-x-4">
         <button className="relative">
           <Bell className="w-5 h-5 text-gray-600" />
@@ -66,7 +66,7 @@ export default function Header({ activeMenu }) {
 
       {/* Profile Modal */}
       {showProfile && (
-        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 font-poppins">
           <div className="bg-white w-full max-w-md rounded-xl p-6 shadow-xl relative">
             <button
               onClick={() => setShowProfile(false)}
@@ -83,7 +83,7 @@ export default function Header({ activeMenu }) {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="mt-1 w-full p-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+                  className="mt-1 w-full p-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300 font-poppins"
                 />
               </div>
               <div>
@@ -93,7 +93,7 @@ export default function Header({ activeMenu }) {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="mt-1 w-full p-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+                  className="mt-1 w-full p-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300 font-poppins"
                 />
               </div>
               <div>
@@ -103,13 +103,13 @@ export default function Header({ activeMenu }) {
                   name="role"
                   value={formData.role}
                   onChange={handleChange}
-                  className="mt-1 w-full p-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+                  className="mt-1 w-full p-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300 font-poppins"
                 />
               </div>
               <div className="flex justify-end pt-4">
                 <button
                   onClick={handleSave}
-                  className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+                  className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 font-poppins"
                 >
                   Save Changes
                 </button>
