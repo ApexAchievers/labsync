@@ -71,7 +71,7 @@ const AppointmentForm = () => {
       });
     } catch (error) {
       // handle error
-    }
+    } navigate("/profile");
   };
 
   return (
@@ -85,7 +85,7 @@ const AppointmentForm = () => {
           className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6"
         >
           {/* Full Name */}
-          <div className="col-span-1">
+          <div>
             <label className="block mb-2 font-semibold text-gray-700">
               Full Name
             </label>
@@ -95,11 +95,11 @@ const AppointmentForm = () => {
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
               placeholder="Enter your full name"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full min-h-[48px] px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
           {/* Email */}
-          <div className="col-span-1">
+          <div>
             <label className="block mb-2 font-semibold text-gray-700">
               Email
             </label>
@@ -109,11 +109,11 @@ const AppointmentForm = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full min-h-[48px] px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
           {/* Gender */}
-          <div className="col-span-1">
+          <div>
             <label className="block mb-2 font-semibold text-gray-700">
               Gender
             </label>
@@ -121,16 +121,15 @@ const AppointmentForm = () => {
               value={gender}
               onChange={(e) => setGender(e.target.value)}
               name="gender"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full min-h-[48px] px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
             >
               <option value="">Select Gender</option>
               <option>male</option>
               <option>female</option>
             </select>
           </div>
-
           {/* Phone Number */}
-          <div className="col-span-1">
+          <div>
             <label className="block mb-2 font-semibold text-gray-700">
               Phone Number
             </label>
@@ -140,11 +139,11 @@ const AppointmentForm = () => {
               value={contact}
               onChange={(e) => setContact(e.target.value)}
               placeholder="Enter your phone number"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full min-h-[48px] px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
           {/* Age */}
-          <div className="col-span-1">
+          <div>
             <label className="block mb-2 font-semibold text-gray-700">
               Age
             </label>
@@ -154,11 +153,11 @@ const AppointmentForm = () => {
               value={age}
               onChange={(e) => setAge(e.target.value)}
               placeholder="Enter your age"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full min-h-[48px] px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
           {/* Date */}
-          <div className="col-span-1">
+          <div>
             <label className="block mb-2 font-semibold text-gray-700">
               Date
             </label>
@@ -167,11 +166,11 @@ const AppointmentForm = () => {
               name="scheduledDate"
               value={scheduledDate}
               onChange={(e) => setScheduledDate(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full min-h-[48px] px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
           {/* Time */}
-          <div className="col-span-1">
+          <div>
             <label className="block mb-2 font-semibold text-gray-700">
               Time
             </label>
@@ -180,11 +179,29 @@ const AppointmentForm = () => {
               name="scheduledTime"
               value={scheduleTime}
               onChange={(e) => setScheduledTime(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full min-h-[48px] px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
-          {/* Test Type */}
-          <div className="col-span-1 md:col-span-2">
+          {/* Priority */}
+          <div>
+            <label className="block mb-2 font-semibold text-gray-700">
+              Priority
+            </label>
+            <select
+              placeholder="select priority"
+              name="priority"
+              value={priority}
+              onChange={(e) => setPriority(e.target.value)}
+              className="w-full min-h-[48px] px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            >
+              <option value="">priority</option>
+              <option>low</option>
+              <option>normal</option>
+              <option>high</option>
+            </select>
+          </div>
+          {/* Test Type (spans both columns) */}
+          <div className="md:col-span-2">
             <label className="block mb-2 font-semibold text-gray-700">
               Test Type
             </label>
@@ -199,29 +216,11 @@ const AppointmentForm = () => {
               placeholder="Select test types"
             />
           </div>
-          {/* Priority */}
-          <div className="col-span-1 md:col-span-2">
-            <label className="block mb-2 font-semibold text-gray-700">
-              Priority
-            </label>
-            <select
-              placeholder="select priority"
-              name="priority"
-              value={priority}
-              onChange={(e) => setPriority(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-            >
-              <option value="">priority</option>
-              <option>low</option>
-              <option>normal</option>
-              <option>high</option>
-            </select>
-          </div>
-          {/* Button */}
+          {/* Button (spans both columns) */}
           <div className="md:col-span-2 flex justify-center mt-8">
             <button
               type="submit"
-              className="w-full md:w-1/2 bg-blue-700 text-white py-3 rounded-lg hover:bg-blue-900 transition duration-300 font-semibold"
+              className="w-full md:w-1/2 bg-blue-700 text-white py-3 rounded-lg hover:bg-blue-900 transition duration-300 font-semibold min-h-[48px]"
             >
               Submit Appointment
             </button>

@@ -1,10 +1,40 @@
 import React from "react";
+import { useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 
 const Appointment = () => {
 
   // Placeholder for appointment data
+const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const id = searchParams.get('id');
 
+  const [appointments, setAppointments] = useState({});
+
+  const getAppointment = () => {
+    apiClient.get(`api/labtest/appointments/${id}`)
+      .then((response) => {
+        console.log(response.data);
+        setAppointments((response.data));
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  }
+
+  useEffect(Appointment, []);
+
+  const deleteBook = () => {
+    apiClient.delete(`/api/v1/books/${id}`)
+    .then((response) => {
+      console.log(response);
+      navigate(-1);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+  }
   
   return (
     <div className="bg-white shadow-md rounded-lg p-6">
