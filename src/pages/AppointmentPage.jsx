@@ -71,7 +71,7 @@ const AppointmentForm = () => {
       });
     } catch (error) {
       // handle error
-    } navigate("/profile");
+    } navigate("/patient-dashboard");
   };
 
   return (

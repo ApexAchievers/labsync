@@ -1,7 +1,46 @@
 import { Pencil } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams  } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { apiClient } from "../api/client";  
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+
 
 export default function ViewAppointment() {
+
+const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const id = searchParams.get('id');
+
+  const [appointments, setAppointments] = useState({});
+
+  const getAppointments = () => {
+    apiClient.get(`/api/labtest/appointments/${id}`)
+      .then((response) => {
+        console.log(response.data);
+        setAppointments((response.data));
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  }
+
+  useEffect(() => {
+      getAppointments();
+    }, []);
+
+  // const deleteAppointment = () => {
+  //   apiClient.delete(`/api/labtest/appointment${id}`)
+  //   .then((response) => {
+  //     console.log(response);
+  //     navigate(-1);
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //   })
+  // }
+  // onClick = {deleteAppointment}
+
   return (
     <div className="w-full max-w-5xl mx-auto py-6">
       <h1 className="text-2xl font-bold text-gray-800 mb-6 text-center">

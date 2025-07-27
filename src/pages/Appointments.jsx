@@ -1,28 +1,27 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useSearchParams, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { apiClient } from "../api/client";
 import { Eye, Pencil, Trash2 } from "lucide-react";
 
 const Appointment = () => {
-  const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
-  const id = searchParams.get("id");
+  
   const [appointments, setAppointments] = useState([]);
 
+  const getAppointments = async () => {
+    try {
+      const response = await apiClient.get("api/labtest/appointments", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      setAppointments(response.data);
+    } catch (error) {
+      console.error("Error fetching appointments:", error);
+    }
+  };
+
   useEffect(() => {
-    const fetchAppointments = async () => {
-      try {
-        const response = await apiClient.get("api/labtest/appointments", {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        });
-        setAppointments(response.data);
-      } catch (error) {
-        console.error("Error fetching appointments:", error);
-      }
-    };
-    fetchAppointments();
+    getAppointments();
   }, []);
 
   return (
@@ -66,17 +65,17 @@ const Appointment = () => {
               <tr key={appt.id}>
                 <td className="px-6 py-4">{appt.fullName}</td>
                 <td className="px-6 py-4">{appt.email}</td>
-                <td className="px-6 py-4">{appt.gender}</td>  
+                <td className="px-6 py-4">{appt.gender}</td>
                 <td className="px-6 py-4">{appt.phoneNumber}</td>
                 <td className="px-6 py-4">{appt.age}</td>
                 <td className="px-6 py-4">{appt.date}</td>
                 <td className="px-6 py-4">{appt.time}</td>
                 <td className="px-6 py-4">{appt.tests?.join(", ")}</td>
                 <td className="px-6 py-4 flex space-x-3">
-                  <Link to={`/patient-dashboard/view-appointment/${appt.id}`}>
+                  <Link to={"/patient-dashboard/view-appointment"}>
                     <Eye className="w-5 h-5 text-blue-500 hover:text-blue-700" />
                   </Link>
-                  <Link to={`/patient-dashboard/edit-appointment${appt.id}`}>
+                  <Link to={"/patient-dashboard/edit-appointment"}>
                     <Pencil className="w-5 h-5 text-green-500 hover:text-green-700" />
                   </Link>
                   <Link to={`/appointment/delete/${appt.id}`}>
