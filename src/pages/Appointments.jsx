@@ -33,16 +33,28 @@ const Appointment = () => {
           <thead className="bg-gray-100">
             <tr>
               <th className="px-6 py-3 text-left text-sm font-medium text-gray-700">
-                Patient Name
+                Full Name
               </th>
               <th className="px-6 py-3 text-left text-sm font-medium text-gray-700">
-                Appointment Date
+                Email
               </th>
               <th className="px-6 py-3 text-left text-sm font-medium text-gray-700">
-                Appointment Time
+                Gender
               </th>
               <th className="px-6 py-3 text-left text-sm font-medium text-gray-700">
-                Selected Tests
+                Phone Number
+              </th>
+              <th className="px-6 py-3 text-left text-sm font-medium text-gray-700">
+                Age
+              </th>
+              <th className="px-6 py-3 text-left text-sm font-medium text-gray-700">
+                Date
+              </th>
+              <th className="px-6 py-3 text-left text-sm font-medium text-gray-700">
+                Time
+              </th>
+              <th className="px-6 py-3 text-left text-sm font-medium text-gray-700">
+                Test Type
               </th>
               <th className="px-6 py-3 text-left text-sm font-medium text-gray-700">
                 Actions
@@ -52,15 +64,19 @@ const Appointment = () => {
           <tbody className="bg-white divide-y divide-gray-200 text-sm text-gray-600">
             {appointments.map((appt) => (
               <tr key={appt.id}>
-                <td className="px-6 py-4">{appt.patientName}</td>
+                <td className="px-6 py-4">{appt.fullName}</td>
+                <td className="px-6 py-4">{appt.email}</td>
+                <td className="px-6 py-4">{appt.gender}</td>  
+                <td className="px-6 py-4">{appt.phoneNumber}</td>
+                <td className="px-6 py-4">{appt.age}</td>
                 <td className="px-6 py-4">{appt.date}</td>
                 <td className="px-6 py-4">{appt.time}</td>
                 <td className="px-6 py-4">{appt.tests?.join(", ")}</td>
                 <td className="px-6 py-4 flex space-x-3">
-                  <Link to={`/view-appointment/${appt.id}`}>
+                  <Link to={`/patient-dashboard/view-appointment/${appt.id}`}>
                     <Eye className="w-5 h-5 text-blue-500 hover:text-blue-700" />
                   </Link>
-                  <Link to={`/edit-appointment${appt.id}`}>
+                  <Link to={`/patient-dashboard/edit-appointment${appt.id}`}>
                     <Pencil className="w-5 h-5 text-green-500 hover:text-green-700" />
                   </Link>
                   <Link to={`/appointment/delete/${appt.id}`}>
