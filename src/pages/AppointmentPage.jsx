@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { apiClient } from "../api/client";
+import { toast } from "react-toastify";
 import Select from "react-select"; // <-- Add this import
 
 const testTypeOptions = [
@@ -69,9 +70,12 @@ const AppointmentForm = () => {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
+      toast.success("Appointment booked successfully!");
+      navigate("/patient-dashboard");
     } catch (error) {
-      // handle error
-    } navigate("/patient-dashboard");
+      toast.error("Failed to book appointment. Please try again.");
+      console.error("Booking error:", error);
+    }
   };
 
   return (
