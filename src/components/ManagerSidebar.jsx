@@ -127,8 +127,11 @@ export default function Sidebar({ activeMenu, setActiveMenu }) {
             <button
               key={'Logout'}
               onClick={() => {
+                localStorage.removeItem('token');
                 setActiveMenu('Logout');
                 setSidebarOpen(false);
+                // Optionally, redirect to login or home page
+                window.location.href = '/';
               }}
               className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors duration-200 ${activeMenu === 'Logout'
                 ? 'text-white bg-[#3b82f6] shadow-sm'
