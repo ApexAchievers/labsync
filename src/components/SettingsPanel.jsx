@@ -12,74 +12,81 @@ export default function SettingsPanel({ section }) {
 
       {/* Render based on section */}
       {section === 'profile' && (
-       <div className="min-h-screen bg-gray-100 py-10 px-4">
-      <div className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-md">
-        <h1 className="text-2xl font-bold mb-6 text-center text-gray-800">
-          Your Profile
-        </h1>
-
-        <form className="space-y-6 max-w-md mx-auto">
-          {/* Full Name */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Full Name
-            </label>
-            <input
-              type="text"
-              name="name"
-              className="w-full border border-gray-300 rounded-md px-4 py-2 text-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-400"
-            />
+        <div className="min-h-screen items-center justify-center bg-gradient-to-br from-blue-100 via-white to-green-100 py-10 px-2 sm:px-4 font-poppins">
+          <div className="w-full max-w-2xl bg-white p-8 rounded-2xl shadow-2xl animate-fade-in-up">
+            <h1 className="text-3xl font-bold mb-8 text-center text-blue-700 tracking-wide animate-fade-in">Your Profile</h1>
+            <form className="space-y-6 max-w-lg mx-auto">
+              {/* Full Name */}
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  className="w-full px-4 py-3 border border-blue-200 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition shadow-sm bg-blue-50 placeholder-gray-400"
+                  placeholder="Enter your full name"
+                />
+              </div>
+              {/* Password */}
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">Password</label>
+                <input
+                  type="password"
+                  name="password"
+                  className="w-full px-4 py-3 border border-blue-200 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition shadow-sm bg-blue-50 placeholder-gray-400"
+                  placeholder="Enter new password"
+                />
+              </div>
+              {/* Email */}
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
+                <input
+                  type="email"
+                  name="email"
+                  className="w-full px-4 py-3 border border-blue-200 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition shadow-sm bg-blue-50 placeholder-gray-400"
+                  placeholder="Enter your email address"
+                />
+              </div>
+              {/* Phone */}
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">Phone Number</label>
+                <input
+                  type="tel"
+                  name="phone"
+                  className="w-full px-4 py-3 border border-blue-200 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition shadow-sm bg-blue-50 placeholder-gray-400"
+                  placeholder="Enter your phone number"
+                />
+              </div>
+              {/* Button */}
+              <div className="pt-4 text-center">
+                <button
+                  type="button"
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-green-500 text-white px-8 py-3 rounded-lg font-semibold shadow hover:from-blue-700 hover:to-green-600 transition-all duration-300"
+                >
+                  {/* <Pencil className="w-4 h-4" /> */}
+                  Edit Profile
+                </button>
+              </div>
+            </form>
+            <style>{`
+              @keyframes fade-in-up {
+                0% { opacity: 0; transform: translateY(40px); }
+                100% { opacity: 1; transform: translateY(0); }
+              }
+              .animate-fade-in-up {
+                animation: fade-in-up 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+              }
+              .animate-fade-in {
+                animation: fade-in 1s ease-in both;
+              }
+              @keyframes fade-in {
+                0% { opacity: 0; }
+                100% { opacity: 1; }
+              }
+            `}</style>
           </div>
+        </div>
+        
 
-          {/* Password */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Password
-            </label>
-            <input
-              type="password"
-              name="password"
-              className="w-full border border-gray-300 rounded-md px-4 py-2 text-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-400"
-            />
-          </div>
-
-          {/* Email */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Email Address
-            </label>
-            <input
-              type="email"
-              name="email"
-              className="w-full border border-gray-300 rounded-md px-4 py-2 text-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-400"
-            />
-          </div>
-
-          {/* Phone */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Phone Number
-            </label>
-            <input
-              type="tel"
-              name="phone"
-              className="w-full border border-gray-300 rounded-md px-4 py-2 text-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-400"
-            />
-          </div>
-
-          {/* Button */}
-          <Link to={'/admin-profile'} className="pt-4 text-center">
-            <button
-              type="button"
-              className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition duration-300"
-            >
-              <Pencil className="w-4 h-4" />
-              Edit Profile
-            </button>
-          </Link>
-        </form>
-      </div>
-    </div>
       )}
 
       {section === 'notifications' && (

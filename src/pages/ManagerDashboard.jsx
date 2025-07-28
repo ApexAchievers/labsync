@@ -7,6 +7,7 @@ import StaffManagement from '../components/StaffManagement';
 import TestManagement from '../components/TestManagement';
 import SettingsPanel from '../components/SettingsPanel';
 import PatientList from '../components/PatientList';
+import BookedTests from '../components/BookedTests';
 
 export default function Dashboard() {
   const [activeMenu, setActiveMenu] = useState('dashboard');
@@ -19,7 +20,7 @@ export default function Dashboard() {
         <div className="p-2 sm:p-4 md:p-6 w-full max-w-full">
           {activeMenu === 'dashboard' && <DashboardContent />}
           {activeMenu === 'staff' && <StaffManagement />}
-          {activeMenu === 'tests' && <TestManagement />}
+          {activeMenu === 'tests' && <BookedTests />}
           {activeMenu === 'user' && <PatientList />}
           {activeMenu === 'profile' && <SettingsPanel section="profile" />}
           {activeMenu === 'notifications' && <SettingsPanel section="notifications" />}

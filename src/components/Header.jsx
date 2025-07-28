@@ -52,9 +52,11 @@ export default function Header({ activeMenu }) {
   };
 
   return (
-    <header className="flex items-center justify-between px-6 py-4 bg-white relative font-poppins">
-      <h1 className="text-xl font-semibold text-gray-800 font-poppins">{titleMap[activeMenu]}</h1>
-      <div className="flex items-center space-x-4">
+    <header className="flex flex-col sm:flex-row items-center justify-between px-4 sm:px-6 py-3 sm:py-4 bg-white relative font-poppins w-full">
+      <h1 className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-800 font-poppins text-center sm:text-left w-full sm:w-auto mb-2 sm:mb-0">
+        {titleMap[activeMenu]}
+      </h1>
+      <div className="flex items-center space-x-2 sm:space-x-4 w-full sm:w-auto justify-center sm:justify-end">
         <button className="relative">
           <Bell className="w-5 h-5 text-gray-600" />
           <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
@@ -66,15 +68,15 @@ export default function Header({ activeMenu }) {
 
       {/* Profile Modal */}
       {showProfile && (
-        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 font-poppins">
-          <div className="bg-white w-full max-w-md rounded-xl p-6 shadow-xl relative">
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 font-poppins px-2">
+          <div className="bg-white w-full max-w-md rounded-xl p-4 sm:p-6 shadow-xl relative">
             <button
               onClick={() => setShowProfile(false)}
               className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
             >
               <X />
             </button>
-            <h2 className="text-lg font-semibold mb-4">User Profile</h2>
+            <h2 className="text-lg font-semibold mb-4 text-center">User Profile</h2>
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700">Name</label>
@@ -106,10 +108,10 @@ export default function Header({ activeMenu }) {
                   className="mt-1 w-full p-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300 font-poppins"
                 />
               </div>
-              <div className="flex justify-end pt-4">
+              <div className="flex flex-col sm:flex-row justify-end pt-4 gap-2">
                 <button
                   onClick={handleSave}
-                  className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 font-poppins"
+                  className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 font-poppins w-full sm:w-auto"
                 >
                   Save Changes
                 </button>

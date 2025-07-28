@@ -79,7 +79,7 @@ function App() {
     { path: "/tech-page/:id", element: <TechPage /> },
     { path: "/support-page", element: <SupportPage /> },
     { path: "/technician-login", element: <TechLogin /> },
-   
+    
   ]);
 
   return (

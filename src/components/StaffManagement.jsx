@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { apiClient } from '../api/client';
 import { UserPlus, Edit, Trash2 } from 'lucide-react'
@@ -7,6 +7,8 @@ import { toast } from 'react-toastify';
 
 export default function StaffManagement() {
     const [staffList, setStaffList] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
     const [editId, setEditId] = useState(null);
     const [newStaff, setNewStaff] = useState({ fullName: '', email: '', specialties: '' });
     const [activeTab, setActiveTab] = useState('list');
@@ -15,6 +17,31 @@ export default function StaffManagement() {
     const specialtyOptions = [
         'Full Blood Count', 'Blood Sugar,Blood Film for Malaria Parasites', 'Sickle Cell, HB Electrophoresis (Genotype)', 'Erythrocyte Sedimentation Rate (ESR)', 'Blood Grouping', 'Typhidot', 'H. Pylori', 'VDRL for Syphillis', 'Hepatitis B', 'Hepatitis C', 'Retro Screenfor HIV', 'Urine R/E', 'Stool R/E', 'Covid 19', 'Liver Function Test (LFT)', 'Kidney Function Test (KFT)', 'BUE & Cr(Gene Xpert)', 'Hormonal/Fertility Tests'
     ];
+
+    // Fetch technicians from backend
+    const fetchTechnicians = async () => {
+        setLoading(true);
+        setError(null);
+        try {
+            const token = localStorage.getItem('token');
+            const res = await axios.get('https://laboratory-sync-api.onrender.com/api/technician', {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            setStaffList(res.data || []);
+        } catch (err) {
+            setError('Failed to fetch technicians');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        if (activeTab === 'list') {
+            fetchTechnicians();
+        }
+    }, [activeTab]);
 
     const handleAddStaff = () => {
         setNewStaff({ fullName: '', email: '', specialties: '' });
@@ -164,44 +191,53 @@ export default function StaffManagement() {
             {activeTab === 'list' && (
                 <div className="bg-white rounded-xl shadow-md overflow-hidden">
                     <div className="px-6 py-4 border-b border-gray-200">
-                        <h3 className="text-lg font-semibold text-gray-800">Staff Directory</h3>
+                        <h3 className="text-lg  text-gray-600">Technicians List</h3>
                     </div>
                     <div className="overflow-x-auto">
                         <table className="w-full">
                             <thead className="bg-gray-50">
                                 <tr>
                                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Name</th>
-                                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Specialties</th>
+
                                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Email</th>
+                                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Specialties</th>
+                                    
                                     <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">Actions</th>
                                 </tr>
                             </thead>
-                            <tbody className="bg-white divide-y divide-gray-200">
-                                {staffList.map(({ id, name, specialties, email }) => (
-                                    <tr key={id} className="hover:bg-gray-50">
-                                        <td className="px-6 py-4">{name}</td>
-                                        <td className="px-6 py-4">{specialties}</td>
-                                        <td className="px-6 py-4">{email}</td>
-                                        <td className="px-6 py-4 text-right">
-                                            <div className="flex justify-end space-x-2">
-                                                <button onClick={() => handleEditStaff(id)} className="text-blue-600 hover:text-blue-900">
-                                                    <Edit className="w-4 h-4" />
-                                                </button>
-                                                <button onClick={() => handleDeleteStaff(id)} className="text-red-600 hover:text-red-900">
-                                                    <Trash2 className="w-4 h-4" />
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                ))}
-                                {staffList.length === 0 && (
-                                    <tr>
-                                        <td colSpan={4} className="text-center text-gray-400 py-6">
-                                            No staff found.
-                                        </td>
-                                    </tr>
-                                )}
-                            </tbody>
+            <tbody className="bg-white divide-y divide-gray-200">
+                {loading ? (
+                    <tr>
+                        <td colSpan={4} className="text-center text-gray-400 py-6">Loading...</td>
+                    </tr>
+                ) : error ? (
+                    <tr>
+                        <td colSpan={4} className="text-center text-red-400 py-6">{error}</td>
+                    </tr>
+                ) : staffList.length > 0 ? (
+                    staffList.map((tech) => (
+                        <tr key={tech.id} className="hover:bg-gray-50">
+                            <td className="px-6 font-medium text-xs">{tech.name || tech.fullName || tech.email}</td>
+                            <td className="px-6 font-medium text-xs ">{tech.specialties}</td>
+                            <td className="px-6 font-medium text-xs text-blue-500">{tech.email}</td>
+                            <td className="px-6 py-2 text-right">
+                                <div className="flex justify-end space-x-2">
+                                    <button onClick={() => handleEditStaff(tech.id)} className="text-blue-500 hover:text-blue-900">
+                                        <Edit className="w-4 h-4" />
+                                    </button>
+                                    <button onClick={() => handleDeleteStaff(tech.id)} className="text-red-600 hover:text-red-900">
+                                        <Trash2 className="w-4 h-4" />
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    ))
+                ) : (
+                    <tr>
+                        <td colSpan={4} className="text-center text-gray-400 py-6">No staff found.</td>
+                    </tr>
+                )}
+            </tbody>
                         </table>
                     </div>
                 </div>
