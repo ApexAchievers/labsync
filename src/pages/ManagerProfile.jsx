@@ -42,7 +42,7 @@ export default function Profile() {
     try {
       const token = localStorage.getItem("token");
       await axios.put(
-        "https://laboratory-sync-api.onrender.com/api/technician/update-profile/68801af9206b789b6d57ed26",
+        "https://laboratory-sync-api.onrender.com/api/auth/profile",
         { fullName, email, phone },
         {
           headers: {
